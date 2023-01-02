@@ -1,14 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
-import TextInputField from '../components/TextInputField';
-import Buttons from '../components/Buttons';
-const LoginScreen = ()=>{
+import TextInputField from '../../components/TextInputField';
+import Buttons from '../../components/Buttons';
+
+const LoginScreen = ({navigation})=>{
+    const login = ()=>{
+      navigation.navigate('AfterLogin')
+    }
     return(
     <View style={styles.container}>
       <Text style={styles.header}>đăng nhập</Text>
       <TextInputField placeholder='Email hoặc số điện thoại'/>
       <TextInputField placeholder='Mật khẩu'/>
       <View style={{marginTop:70}}></View>
-      <Buttons title = 'Login'></Buttons>
+      <Buttons title = 'Đăng nhập' onPress = {login}></Buttons>
       <View style={{marginTop:24}}></View>
       <Buttons title = 'Bạn quên mật khẩu' variant = 'link'></Buttons>
       <Separator></Separator>
@@ -48,6 +52,7 @@ const styles = StyleSheet.create({
       color: '#A38F8B',
     },
     container: {
+      height:'100%',
       padding:20,
       marginTop: 20,
       display: 'flex',
