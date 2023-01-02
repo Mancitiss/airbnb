@@ -1,4 +1,4 @@
-import {Text, View,StyleSheet } from 'react-native';
+import {Text, View, StyleSheet } from 'react-native';
 const AfterLogin = ()=>{
     return(
     <View style={styles.container}>
