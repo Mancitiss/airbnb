@@ -2,9 +2,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import TextInputField from '../../components/TextInputField';
 import Buttons from '../../components/Buttons';
 
-const LoginScreen = ({navigation})=>{
+const LoginScreen = ({navigation})=>{ 
     const login = ()=>{
-      navigation.navigate('AfterLogin')
+      navigation.navigate('AfterLogin') 
     }
     return(
     <View style={styles.container}>
