@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, Pressable,View } from 'react-native';
+import { Button } from 'react-native';
+
 const Buttons=(props)=> {
   const { onPress} = props;
   const style = ()=>{''.to
