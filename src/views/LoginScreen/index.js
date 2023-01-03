@@ -4,12 +4,14 @@ import Buttons from '../../components/Buttons';
 
 const LoginScreen = ({navigation})=>{
     const login = ()=>{
-      navigation.navigate('AfterLogin')
+      navigation.navigate('Welcome')
     }
     return(
     <View style={styles.container}>
       <Text style={styles.header}>đăng nhập</Text>
+      <View style={{marginTop:50}}></View>
       <TextInputField placeholder='Email hoặc số điện thoại'/>
+      <View style={{marginTop:50}}></View>
       <TextInputField placeholder='Mật khẩu'/>
       <View style={{marginTop:70}}></View>
       <Buttons title = 'Đăng nhập' onPress = {login}></Buttons>
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
     container: {
       height:'100%',
       padding:20,
-      marginTop: 20,
+      marginTop: 22,
       display: 'flex',
       backgroundColor: '#fff',
     },
