@@ -4,7 +4,7 @@ import Buttons from '../../components/Buttons';
 
 const LoginScreen = ({navigation})=>{
     const login = ()=>{
-      navigation.navigate('AfterLogin')
+      navigation.navigate('Home')
     }
     return(
     <View style={styles.container}>
