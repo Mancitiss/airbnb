@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, Pressable,View } from 'react-native';
-import { Button } from 'react-native';
+import { Text, StyleSheet, Pressable } from 'react-native';
 
 const Buttons=(props)=> {
   const { onPress} = props;
@@ -10,6 +9,8 @@ const Buttons=(props)=> {
             return styles.ghost
         case 'link':
             return styles.link
+        case 'icon':
+          return styles.icon
         default:
             return styles.primary
     }
@@ -77,7 +78,12 @@ const styles = StyleSheet.create({
       color: '#FFFDFD',
     }
   },
-  
+  icon: {
+    textAlign:'center',
+    onPress:{
+      
+    }
+  },
 });
 
 export default Buttons 
