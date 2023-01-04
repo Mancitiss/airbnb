@@ -1,10 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native';
 import TextInputField from '../../components/TextInputField';
 import Buttons from '../../components/Buttons';
+import { FontAwesome } from '@expo/vector-icons'
 
 const LoginScreen = ({navigation})=>{
     const login = ()=>{
       navigation.navigate('Welcome')
+    }
+    const forgotPassword=()=>{
+
+    }
+    const google=()=>{
+      
+    }
+    const facebook=()=>{
+      
     }
     return(
     <View style={styles.container}>
@@ -16,16 +26,26 @@ const LoginScreen = ({navigation})=>{
       <View style={{marginTop:70}}></View>
       <Buttons title = 'Đăng nhập' onPress = {login}></Buttons>
       <View style={{marginTop:24}}></View>
-      <Buttons title = 'Bạn quên mật khẩu' variant = 'link'></Buttons>
+      <Buttons title = 'Bạn quên mật khẩu' variant = 'link' onPress = {forgotPassword}></Buttons>
       <Separator></Separator>
       <View style={{flexDirection: 'row', alignItems: 'center',marginTop:70}}>
         <View style={{width:'48%'}}>
-            <Buttons title = '' variant = 'ghost'></Buttons>
+            <Buttons 
+              onPress = {google} 
+              title={<FontAwesome name="google" size={24} color="red" />}
+              variant = 'ghost'>
+            </Buttons>
         </View>
         <View style={{width:'4%'}}>
         </View>
         <View style={{width:'48%'}}>
-            <Buttons title = '' variant = 'ghost'></Buttons>
+            <Buttons
+              onPress = {facebook} 
+              variant = 'ghost'
+              title={<FontAwesome name="facebook" size={24} color="blue" />
+            }>
+            </Buttons>
+            <View style={[styles.box, ]}/>
         </View>
       </View>
     </View> 

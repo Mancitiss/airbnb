@@ -3,6 +3,8 @@ import {StyleSheet, TextInput,View } from "react-native";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import { Text } from "react-native";
 import Buttons from "../Buttons";
+import { FontAwesome5 } from '@expo/vector-icons';
+
 
 const TextInputField = (props) => {
   const [ShowDateModal, setShowDateModal] = useState(false);
@@ -22,10 +24,20 @@ const TextInputField = (props) => {
         >
         </TextInput>
         <View style={{width:30, height:30, marginLeft: 'auto'}}>
-        <Buttons variant = 'ghost' onPress={()=>{setShowDateModal(true)}}></Buttons>
+        
+        <Buttons 
+          variant = 'icon' 
+          onPress={()=>{setShowDateModal(true)}}
+          title={<FontAwesome5
+            color='#B3B3B3'
+            size='32'
+            name="calendar-alt"
+            />}
+          >
+        </Buttons>
         </View>
         </View>
-
+  
       {
         ShowDateModal&&
         <RNDateTimePicker
@@ -59,9 +71,8 @@ const TextInputField = (props) => {
         onChangeText={props.onChange}
       />
       {props.error&&<Text style={styles.error} >{props.error}</Text>}
-      </>
-    )
-  }
+    </>
+  )}
 };
 const styles = StyleSheet.create({
   text:{
