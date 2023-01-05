@@ -7,11 +7,13 @@ const Search = ()=>{
     let place = ""
     let childQuantity = 0
     let adultQuantity = 0
+    let count = 0
     const search=()=>{
       
     }
     const [validChild,setValidChild] = useState(true)
     const [validAdult,setValidAdult] = useState(true)
+    const [validCount, setValidCount] = useState(true)
     const [stayDate,setStayDate] = useState()
     const [returnDate,setReturnDate] = useState()
     return(
@@ -72,7 +74,20 @@ const Search = ()=>{
       error={!validAdult?'Số lượng phải là số':undefined}
       />
 
-      <View style={{marginTop:70}}></View>
+      <View style={{marginTop:25}}></View>
+      <Text style={styles.header}>số lượng</Text>
+      <View style={{marginTop:14}}></View>
+      <TextInputField 
+      placeholder='Nhập số lượng' 
+      keyboardType ='number-pad' 
+      onChange={(text)=>{
+        count=text 
+        setValidCount(validateNumber(text))
+      }}
+      error={!validCount?'Số lượng phải là số':undefined}
+      />
+
+      <View style={{marginTop:40}}></View>
       <Buttons title = 'Tìm kiếm' onPress={search}></Buttons>
     </View> 
     </ScrollView>
