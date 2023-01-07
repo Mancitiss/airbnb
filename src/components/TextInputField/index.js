@@ -50,8 +50,8 @@ const TextInputField = (props) => {
       }}
       value={props.defaultValue?props.defaultValue:new Date()}
       onChange={(event, date) => {
-        if(event.type='dismissed'){setShowDateModal(false)}
-        if(event.type='set'){
+        if(event.type=='dismissed'){setShowDateModal(false)}
+        if(event.type=='set'){
           props.onChange(date)
           setShowDateModal(false)
         }

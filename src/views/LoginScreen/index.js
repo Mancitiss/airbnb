@@ -45,7 +45,7 @@ const LoginScreen = ({navigation})=>{
               title={<FontAwesome name="facebook" size={24} color="blue" />
             }>
             </Buttons>
-            <View style={[styles.box, ]}/>
+            <View style={styles.box}/>
         </View>
       </View>
     </View> 
