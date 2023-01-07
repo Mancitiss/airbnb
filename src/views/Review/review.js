@@ -6,7 +6,7 @@ const ReviewPage = () => {
     return (
         <View style={styles.container}>
             <View style={styles.fixed_heading}>
-                <Image style={styles.back_button} source={require('./assets/icons8-chevron-left-20.png')} />
+                <Image style={styles.back_button} source={require('../../../assets/icons8-chevron-left-20.png')} />
                 <Text style={styles.heading}>ĐÁNH GIÁ</Text>
             </View>
 
@@ -15,13 +15,13 @@ const ReviewPage = () => {
 
                 <View style={styles.section_review}>
                     <View style={styles.review}>
-                        <Image style={styles.avatar} source={require('./assets/about_us1.png')} />
+                        <Image style={styles.avatar} source={require('../../../assets/about_us1.png')} />
                         <View style={styles.info_review}>
                             <Text style={styles.name_review}> Lê Phương </Text>
                             <Text style={styles.date_review}> 30 Dec 2022 </Text>
                         </View>
                         <View style={styles.rate_review}>
-                            <Image style={styles.star} source={require('./assets/icons8-star-filled-50.png')} />
+                            <Image style={styles.star} source={require('../../../assets/icons8-star-filled-50.png')} />
                             <Text style={styles.rate_number}> 4.0 </Text>
                         </View>
                     </View>
@@ -34,13 +34,13 @@ const ReviewPage = () => {
 
                 <View style={styles.section_review}>
                     <View style={styles.review}>
-                        <Image style={styles.avatar} source={require('./assets/about_us1.png')} />
+                        <Image style={styles.avatar} source={require('../../../assets/about_us1.png')} />
                         <View style={styles.info_review}>
                             <Text style={styles.name_review}> Lê Phương </Text>
                             <Text style={styles.date_review}> 30 Dec 2022 </Text>
                         </View>
                         <View style={styles.rate_review}>
-                            <Image style={styles.star} source={require('./assets/icons8-star-filled-50.png')} />
+                            <Image style={styles.star} source={require('../../../assets/icons8-star-filled-50.png')} />
                             <Text style={styles.rate_number}> 4.0 </Text>
                         </View>
                     </View>
@@ -53,13 +53,13 @@ const ReviewPage = () => {
 
                 <View style={styles.section_review}>
                     <View style={styles.review}>
-                        <Image style={styles.avatar} source={require('./assets/about_us1.png')} />
+                        <Image style={styles.avatar} source={require('../../../assets/about_us1.png')} />
                         <View style={styles.info_review}>
                             <Text style={styles.name_review}> Lê Phương </Text>
                             <Text style={styles.date_review}> 30 Dec 2022 </Text>
                         </View>
                         <View style={styles.rate_review}>
-                            <Image style={styles.star} source={require('./assets/icons8-star-filled-50.png')} />
+                            <Image style={styles.star} source={require('../../../assets/icons8-star-filled-50.png')} />
                             <Text style={styles.rate_number}> 4.0 </Text>
                         </View>
                     </View>
@@ -72,13 +72,13 @@ const ReviewPage = () => {
 
                 <View style={styles.section_review}>
                     <View style={styles.review}>
-                        <Image style={styles.avatar} source={require('./assets/about_us1.png')} />
+                        <Image style={styles.avatar} source={require('../../../assets/about_us1.png')} />
                         <View style={styles.info_review}>
                             <Text style={styles.name_review}> Lê Phương </Text>
                             <Text style={styles.date_review}> 30 Dec 2022 </Text>
                         </View>
                         <View style={styles.rate_review}>
-                            <Image style={styles.star} source={require('./assets/icons8-star-filled-50.png')} />
+                            <Image style={styles.star} source={require('../../../assets/icons8-star-filled-50.png')} />
                             <Text style={styles.rate_number}> 4.0 </Text>
                         </View>
                     </View>
@@ -91,13 +91,13 @@ const ReviewPage = () => {
 
                 <View style={styles.section_review}>
                     <View style={styles.review}>
-                        <Image style={styles.avatar} source={require('./assets/about_us1.png')} />
+                        <Image style={styles.avatar} source={require('../../../assets/about_us1.png')} />
                         <View style={styles.info_review}>
                             <Text style={styles.name_review}> Lê Phương </Text>
                             <Text style={styles.date_review}> 30 Dec 2022 </Text>
                         </View>
                         <View style={styles.rate_review}>
-                            <Image style={styles.star} source={require('./assets/icons8-star-filled-50.png')} />
+                            <Image style={styles.star} source={require('../../../assets/icons8-star-filled-50.png')} />
                             <Text style={styles.rate_number}> 4.0 </Text>
                         </View>
                     </View>

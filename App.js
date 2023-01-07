@@ -1,5 +1,4 @@
 import LoginScreen from './src/views/LoginScreen';
-import Bottom_Sheet_room from './src/views/Review/Bottom_Sheet_room';
 import Welcome from './src/views/Welcome';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -14,10 +13,7 @@ export default function App() {
           headerShown: false
           }}
       >
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-        />
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Search" component={Search} />
       </Stack.Navigator>

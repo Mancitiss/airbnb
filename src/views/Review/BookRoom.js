@@ -7,7 +7,7 @@ const BookRoom = () => {
     return (
         <View style={styles.container}>
             <View style={styles.fixed_heading}>
-                <Image style={styles.back_button} source={require('../assets/icons8-chevron-left-20.png')} />
+                <Image style={styles.back_button} source={require('../../../assets/icons8-chevron-left-20.png')} />
                 <Text style={styles.heading}>Yêu cầu đặt phòng</Text>
             </View>
             <ScrollView style={{
@@ -18,7 +18,7 @@ const BookRoom = () => {
                         height: 180,
                         width: 180,
                         borderRadius: 20,
-                    }} source={require('../assets/about_us1.png')} />
+                    }} source={require('../../../assets/about_us1.png')} />
                     <Text style={{
                         flex: 2,
                         textAlign: 'right',
@@ -147,22 +147,22 @@ const BookRoom = () => {
                             marginRight: 10,
                             height: 25,
                             width: 25,
-                        }} source={require('../assets/icons8-visa-25.png')} />
+                        }} source={require('../../../assets/icons8-visa-25.png')} />
                         <Image style={{
                             marginRight: 10,
                             height: 25,
                             width: 25,
-                        }} source={require('../assets/icons8-mastercard-logo-48.png')} />
+                        }} source={require('../../../assets/icons8-mastercard-logo-48.png')} />
                         <Image style={{
                             marginRight: 10,
                             height: 30,
                             width: 30,
-                        }} source={require('../assets/icons8-paypal-25.png')} />
+                        }} source={require('../../../assets/icons8-paypal-25.png')} />
                         <Image style={{
                             marginRight: 10,
                             height: 30,
                             width: 30,
-                        }} source={require('../assets/icons8-google-pay-100.png')} />
+                        }} source={require('../../../assets/icons8-google-pay-100.png')} />
                     </View>
                     <View style={styles.column}>
                         <Text style={{
@@ -286,7 +286,7 @@ const BookRoom = () => {
                         height: 40,
                         width: 40,
                         
-                    }} source={require('../assets/icons8-hourglass-100.png')} />
+                    }} source={require('../../../assets/icons8-hourglass-100.png')} />
                     <Text style={{
                         lineHeight: 20,
                     }}>Phòng bạn đặt sẽ không được xác nhận cho đến khi 
