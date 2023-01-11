@@ -10,7 +10,7 @@ const Intro = ({navigation}) => {
     // and then navigate to Login screen
     setTimeout(() => {
       navigation.navigate('Login');
-    }, 10000);
+    }, 1000);
     
     return (
         <View style={styles.container}>

@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import TextInputField from '../../components/TextInputField';
 import Buttons from '../../components/Buttons';
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons';
 
-const LoginScreen = ({navigation})=>{
+const LoginScreen = ({navigation})=>{ 
     const login = ()=>{
-      navigation.navigate('Welcome')
+      navigation.navigate('DetailScreen') 
     }
     const forgotPassword=()=>{
 
@@ -14,7 +14,6 @@ const LoginScreen = ({navigation})=>{
       
     }
     const facebook=()=>{
-      
     }
     return(
     <View style={styles.container}>
