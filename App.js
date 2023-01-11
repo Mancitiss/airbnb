@@ -2,8 +2,10 @@ import LoginScreen from './src/views/LoginScreen';
 import AfterLogin from './src/views/AfterLogin';
 import Intro from './src/views/Intro';
 import DetailScreen from './src/views/DetailScreen';
+import Welcome from './src/views/Welcome';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Search from './src/views/Search';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
