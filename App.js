@@ -1,5 +1,4 @@
 import LoginScreen from './src/views/LoginScreen';
-import AfterLogin from './src/views/AfterLogin';
 import Intro from './src/views/Intro';
 import DetailScreen from './src/views/DetailScreen';
 import Welcome from './src/views/Welcome';
@@ -17,26 +16,8 @@ export default function App() {
         }}>
         <Stack.Screen name="Intro" component={Intro} />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="AfterLogin" component={AfterLogin} />
         <Stack.Screen name="DetailScreen" component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-  
-
-  // return (
-  //   <NavigationContainer>
-  //     <Stack.Navigator 
-  //       screenOptions={{
-  //         headerShown: false
-  //         }}
-  //     >
-  //       <Stack.Screen
-  //         name="Login"
-  //         component={LoginScreen}
-  //       />
-  //       <Stack.Screen name="AfterLogin" component={AfterLogin} />
-  //     </Stack.Navigator>
-  //   </NavigationContainer>
-  // );
 }
