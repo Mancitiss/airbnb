@@ -64,11 +64,11 @@ export default function App() {
             borderBottomColor: '#bbb', borderBottomWidth: 1,
             display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
             <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Image source={require('./assets/icon-bed.png')} style={{width: 30, height: 30, marginBottom: 5, fontSize: 15}} />
+              <Image source={require('./assets/icon-bed.png')} style={{width: 30, height: 30, marginBottom: 5}} />
               <Text style={{marginTop: 8}}>{'   '}Giường đôi</Text> 
             </View>
             <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Image source={require('./assets/icon-people.png')} style={{width: 30, height: 30, marginBottom: 5, fontSize: 15}} />
+              <Image source={require('./assets/icon-people.png')} style={{width: 30, height: 30, marginBottom: 5}} />
               <Text style={{marginTop: 8}}>{'   '}2 người</Text> 
             </View>
           </View>
@@ -90,7 +90,7 @@ export default function App() {
                 <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
                   paddingTop: 15}}>
                   <Text style={{fontSize: 15}}>Hướng nhìn ra vườn</Text>
-                  <Image source={require('./assets/icon-sun.png')} style={{width: 30, height: 30, marginBottom: 5, fontSize: 15}} />
+                  <Image source={require('./assets/icon-sun.png')} style={{width: 30, height: 30, marginBottom: 5}} />
                 </View>
 
                 <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
@@ -102,19 +102,19 @@ export default function App() {
                 <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
                   paddingTop: 15, paddingBottom: 10}}>
                   <Text style={{fontSize: 15}}>Máy lạnh riêng từng phòng</Text>
-                  <Image source={require('./assets/icon-aircon.png')} style={{width: 27, height: 25, marginBottom: 5, fontSize: 15}} />
+                  <Image source={require('./assets/icon-aircon.png')} style={{width: 27, height: 25, marginBottom: 5}} />
                 </View>
 
                 <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
                   paddingTop: 15, paddingBottom: 10}}>
                   <Text style={{fontSize: 15}}>Chỗ đậu xe rộng rãi</Text>
-                  <Image source={require('./assets/icon-parking.png')} style={{width: 27, height: 25, marginBottom: 5, fontSize: 15}} />
+                  <Image source={require('./assets/icon-parking.png')} style={{width: 27, height: 25, marginBottom: 5}} />
                 </View>
 
                 <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
                   paddingTop: 15, paddingBottom: 0}}>
                   <Text style={{fontSize: 15}}>Thang máy tiện lợi</Text>
-                  <Image source={require('./assets/icon-elevator.png')} style={{width: 27, height: 25, marginBottom: 5, fontSize: 15}} />
+                  <Image source={require('./assets/icon-elevator.png')} style={{width: 27, height: 25, marginBottom: 5}} />
                 </View>
               </View>
           </View>
@@ -207,7 +207,7 @@ export default function App() {
                 <Image source={{uri: 'https://www.google.com/maps/d/thumbnail?mid=1GY1GynFgJrnetohH91WuzJGvoFk&hl=en_US'}} style={{width: '100%', height: 200}} />
               </View>
               <Text style={{fontSize: 18, fontWeight: '700', marginBottom: 5}}>
-                <Image source={require('./assets/icon-location.png')} style={{width: 27, height: 25, marginBottom: 5, fontSize: 15}} />
+                <Image source={require('./assets/icon-location.png')} style={{width: 27, height: 25, marginBottom: 5}} />
                 Thành phố Hạ Long, Quảng Ninh, Việt Nam</Text>
               <Text style={{fontSize: 15}}>
                 - 5 minutes walk from the beach {'\n'}
@@ -226,7 +226,7 @@ export default function App() {
                     paddingTop: 20, paddingBottom: 0}}>
                     
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                      <Image source={require('./assets/icon-entertainment.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10, fontSize: 15}} />
+                      <Image source={require('./assets/icon-entertainment.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10}} />
                       <Text style={{fontSize: 16, fontWeight: '700', lineHeight: 20}}>Khu vui chơi cho bé {'\n'}
                         <Text style={{fontSize: 14, fontWeight: '500'}}>Giải trí</Text>
                       </Text>
@@ -239,7 +239,7 @@ export default function App() {
                     paddingTop: 20, paddingBottom: 0}}>
                     
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                      <Image source={require('./assets/icon-bus.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10, fontSize: 15}} />
+                      <Image source={require('./assets/icon-bus.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10}} />
                       <Text style={{fontSize: 16, fontWeight: '700', lineHeight: 20}}>Trạm bus{'\n'}
                         <Text style={{fontSize: 14, fontWeight: '500'}}>Phương tiện công cộng</Text>
                       </Text>
@@ -252,7 +252,7 @@ export default function App() {
                     paddingTop: 20, paddingBottom: 0}}>
                     
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                      <Image source={require('./assets/icon-hospital.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10, fontSize: 15}} />
+                      <Image source={require('./assets/icon-hospital.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10}} />
                       <Text style={{fontSize: 16, fontWeight: '700', lineHeight: 20}}>Bệnh viện Hạ Long{'\n'}
                         <Text style={{fontSize: 14, fontWeight: '500'}}>Sức khỏe</Text>
                       </Text>
@@ -265,7 +265,7 @@ export default function App() {
                     paddingTop: 20, paddingBottom: 0}}>
                     
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                      <Image source={require('./assets/icon-store.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10, fontSize: 15}} />
+                      <Image source={require('./assets/icon-store.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10}} />
                       <Text style={{fontSize: 16, fontWeight: '700', lineHeight: 20}}>Chợ Hạ Long{'\n'}
                         <Text style={{fontSize: 14, fontWeight: '500'}}>Mua sắm</Text>
                       </Text>
