@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar'; 
 import React, {useEffect, useRef, useState, Component, Fragment} from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, Icon, Button } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';

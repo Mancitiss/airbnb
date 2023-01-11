@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import TextInputField from '../../components/TextInputField';
 import Buttons from '../../components/Buttons';
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons';
 
 const LoginScreen = ({navigation})=>{ 
     const login = ()=>{
