@@ -4,16 +4,18 @@ import TextInputField from '../../components/TextInputField';
 import { useState } from 'react';
 import { validateNumber } from '../../utils/input/number';
 const Search = ({navigation})=>{
-    let place = ""
+    global.place = ""
     let childQuantity = 0
     let adultQuantity = 0
     let count = 0
     const search=()=>{
       // navigate to detail
-      console.log(place)
+      console.log(global.place)
       console.log(childQuantity)
       console.log(adultQuantity)
       console.log(count)
+      console.log(stayDate)
+      console.log(returnDate)
       navigation.navigate('DetailScreen')
     }
     const [validChild,setValidChild] = useState(true)
@@ -27,7 +29,7 @@ const Search = ({navigation})=>{
       <Text style={styles.header} >địa diểm</Text>
       <View style={{marginTop:14}}></View>
       <TextInputField placeholder='Chọn địa điểm bạn du lịch'
-      onChange={(text)=>{place=text}}
+      onChange={(text)=>{global.place=text}}
       />
 
       <View style={{marginTop:25}}></View>
