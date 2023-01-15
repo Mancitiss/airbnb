@@ -19,7 +19,7 @@ const TextInputField = (props) => {
             props.defaultValue.getDate()+"/"+props.defaultValue.getMonth()+1+"/"+props.defaultValue.getFullYear()
             :""}
           placeholder='dd/mm/yy'
-          keyboardType={props.keyboardType}
+          //keyboardType={props.keyboardType}
           onChangeText={props.onChange}
         >
         </TextInput>
@@ -30,7 +30,7 @@ const TextInputField = (props) => {
           onPress={()=>{setShowDateModal(true)}}
           title={<FontAwesome5
             color='#B3B3B3'
-            size='32'
+            size={32}
             name="calendar-alt"
             />}
           >
@@ -69,6 +69,7 @@ const TextInputField = (props) => {
         placeholder={props.placeholder}
         keyboardType={props.keyboardType}
         onChangeText={props.onChange}
+        secureTextEntry={props.secureTextEntry}
       />
       {props.error&&<Text style={styles.error} >{props.error}</Text>}
     </>

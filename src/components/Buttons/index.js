@@ -3,7 +3,7 @@ import { Text, StyleSheet, Pressable } from 'react-native';
 
 const Buttons=(props)=> {
   const { onPress} = props;
-  const style = ()=>{''.to
+  const style = ()=>{
     switch (props.variant) {
         case 'ghost':
             return styles.ghost
@@ -37,26 +37,26 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 8,
     backgroundColor: '#A38F8B',
-    // onPress:{
-    //   textAlign:'center',
-    //   fontSize: 18,
-    //   color: '#FFFDFD',
-    //   paddingVertical: 16,
-    //   borderRadius: 8,
-    //   backgroundColor:'#504643'
-    // }
+    onPress:{
+      textAlign:'center',
+      fontSize: 18,
+      color: '#FFFDFD',
+      paddingVertical: 16,
+      borderRadius: 8,
+      backgroundColor:'#504643'
+    }
   },
   link: {
     textAlign:'center',
     fontSize: 14,
     opacity:0.5,
     color: '#000000',
-    // onPress:{
-    //   textAlign:'center',
-    //   fontSize: 14,
-    //   opacity:1,
-    //   color: '#000000',
-    // }
+    onPress:{
+      textAlign:'center',
+      fontSize: 14,
+      opacity:1,
+      color: '#000000',
+    }
   },
   ghost: {
     textAlign:'center',
@@ -67,22 +67,19 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(112, 112, 112,0.7)',
     fontSize: 18,
     color: '#FFFDFD',
-    // onPress:{
-    //   textAlign:'center',
-    //   paddingVertical: 16,
-    //   borderRadius: 8,
-    //   borderWidth: 1,
-    //   width:'100%',
-    //   borderColor: 'rgba(112, 112, 112,1)',
-    //   fontSize: 18,
-    //   color: '#FFFDFD',
-    // }
+    onPress:{
+      textAlign:'center',
+      paddingVertical: 16,
+      borderRadius: 8,
+      borderWidth: 1,
+      width:'100%',
+      borderColor: 'rgba(112, 112, 112,1)',
+      fontSize: 18,
+      color: '#FFFDFD',
+    }
   },
   icon: {
-    textAlign:'center',
-    onPress:{
-      
-    }
+    textAlign:'center'
   },
 });
 
