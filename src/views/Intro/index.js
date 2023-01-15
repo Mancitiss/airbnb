@@ -9,7 +9,12 @@ const Intro = ({navigation}) => {
     // make the app load for 10 seconds while showing Intro
     // and then navigate to Login screen
     setTimeout(() => {
-      navigation.navigate('Login');
+        navigation.navigate('Login');
+        // remove the Intro screen from the stack
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Login' }],
+        }); 
     }, 1000);
     
     return (

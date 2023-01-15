@@ -3,13 +3,18 @@ import Buttons from '../../components/Buttons';
 import TextInputField from '../../components/TextInputField';
 import { useState } from 'react';
 import { validateNumber } from '../../utils/input/number';
-const Search = ()=>{
+const Search = ({navigation})=>{
     let place = ""
     let childQuantity = 0
     let adultQuantity = 0
     let count = 0
     const search=()=>{
-      
+      // navigate to detail
+      console.log(place)
+      console.log(childQuantity)
+      console.log(adultQuantity)
+      console.log(count)
+      navigation.navigate('DetailScreen')
     }
     const [validChild,setValidChild] = useState(true)
     const [validAdult,setValidAdult] = useState(true)
