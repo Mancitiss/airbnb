@@ -8,7 +8,7 @@
 // footer has 3 sections: home (this screen), love, profile
 // and a body whose width is 100% of the screen
 // make this page become a function and return the component instead of class
-
+import Icon from 'react-native-vector-icons/FontAwesome'
 import React from 'react';
 import { View, Text, StyleSheet,TouchableOpacity, Button, Image, ScrollView } from 'react-native';
 
@@ -16,10 +16,13 @@ const Home = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <View style={{width: '25%'}}></View>
-                <View style={{width: '25%'}}></View>
-                <View style={{width: '25%'}}></View>
-                <View style={{width: '25%'}}></View>
+                <Image style={{
+                    margin: '35%',
+                    width: '30%', 
+                    height: '30%',
+                    
+                }} source={require('../../../assets/logo-color.png')} /> 
+                
             </View>
             <View style={styles.body}>
                 <View style={{
@@ -145,7 +148,7 @@ const Home = ({navigation}) => {
                     <Image style={{
                         height: 25,
                         width: 25,
-                    }} source={require('../../../assets/icons8-search-48.png')} />
+                    }} source={require('../../../assets/icons8-home-32.png')} />
                     <Text>Khám phá</Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
@@ -159,15 +162,8 @@ const Home = ({navigation}) => {
                     <Image style={{
                         height: 25,
                         width: 25,
-                    }} source={require('../../../assets/icons8-key-64.png')} />
-                    <Text style={{ color: '#73777B' }}>Chìa khóa</Text>
-                </View>
-                <View style={{ alignItems: 'center' }}>
-                    <Image style={{
-                        height: 25,
-                        width: 25,
-                    }} source={require('../../../assets/icons8-secured-letter-32.png')} />
-                    <Text style={{ color: '#73777B' }}>Hộp thư</Text>
+                    }} source={require('../../../assets/icons8-search-48.png')} />
+                    <Text style={{ color: '#73777B' }}>Tìm kiếm</Text>
                 </View>
                 <View style={{ alignItems: 'center', marginRight: '5%' }}>
                     <Image style={{
@@ -192,7 +188,7 @@ const styles = StyleSheet.create({
     header:{
         width: '100%',
         height: '10%',
-        backgroundColor: '#FF7B54',
+        backgroundColor: '#fff',
         flexDirection: 'row',
         position: 'absolute',
         top: 0,
