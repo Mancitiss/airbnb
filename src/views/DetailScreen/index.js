@@ -21,6 +21,14 @@ const images = [
 export default function App() {
   return (
     <View style={{flex: 1}}>
+      <View style={{display: 'flex', flexDirection: "row" ,justifyContent: 'space-between',
+        zIndex: 1000, position: 'absolute', top: 30, right: 0}}>
+        <AntDesign name='left' style={{width: 40,color: 'black', fontSize: 25, left: -330, paddingTop: 7, paddingBottom:7, paddingLeft: 6, backgroundColor: 'white', borderRadius: 50}}></AntDesign>
+        <View style={{right: 20, display: 'flex', flexDirection: 'row'}}>
+          <AntDesign name='sharealt' style={{width: 40,color: 'black', fontSize: 25, elevation: 100, marginRight: 10, paddingTop: 7, paddingBottom:7, paddingLeft: 6, backgroundColor: 'white', borderRadius: 50}}></AntDesign>
+          <AntDesign name='heart' style={{width: 40,height: 40,color: 'black', fontSize: 25, elevation: 100, paddingTop: 8, paddingBottom:7, paddingLeft: 7, backgroundColor: 'white', borderRadius: 50}}></AntDesign>
+        </View>
+      </View>
       <ScrollView>
         <View>
 
@@ -37,14 +45,7 @@ export default function App() {
             autoplayInterval={3000}
             paginationBoxVerticalPadding={10} />
 
-            <View style={{display: 'flex', flexDirection: "row" ,justifyContent: 'space-between',
-              zIndex: 1000, position: 'absolute', top: 30, right: 0}}>
-              <AntDesign name='left' style={{width: 40,color: 'black', fontSize: 25, left: -330, paddingTop: 7, paddingBottom:7, paddingLeft: 6, backgroundColor: 'white', borderRadius: 50}}></AntDesign>
-              <View style={{right: 20, display: 'flex', flexDirection: 'row'}}>
-                <AntDesign name='sharealt' style={{width: 40,color: 'black', fontSize: 25, elevation: 100, marginRight: 10, paddingTop: 7, paddingBottom:7, paddingLeft: 6, backgroundColor: 'white', borderRadius: 50}}></AntDesign>
-                <AntDesign name='heart' style={{width: 40,height: 40,color: 'black', fontSize: 25, elevation: 100, paddingTop: 8, paddingBottom:7, paddingLeft: 7, backgroundColor: 'white', borderRadius: 50}}></AntDesign>
-              </View>
-          </View>
+            {/* header was here */}
           </View>
           
           {/* ---------------title------------- */}
@@ -275,8 +276,9 @@ export default function App() {
                 </View>
             </View>   
           </View>   
-
-          <View style={{ width: '100%', paddingLeft: 20, paddingRight: 20, borderTopColor: '#bbb', borderTopWidth: 3}}>
+        </View>
+      </ScrollView>
+      <View style={{ width: '100%', paddingLeft: 20, paddingRight: 20, borderTopColor: '#bbb', borderTopWidth: 3}}>
             <View style={{height: 150, display: 'flex', flexDirection: 'row' ,justifyContent: 'space-between', alignItems: 'center'}}>
               <Text style={{lineHeight: 40, fontSize: 20, paddingTop: 10}}>Giá phòng / đêm / từ {'\n'}
                 <Text style= {{color: '#e11960',fontSize: 25, fontWeight: '700'}}>VND 2.190.000 {'\n'}</Text>
@@ -289,10 +291,6 @@ export default function App() {
 
             </View>
           </View>
-
-        </View>
-      </ScrollView>
-      
     </View>
    
   )
