@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'; 
 import React, {useEffect, useRef, useState, Component, Fragment} from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Icon, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Icon, Button, Pressable } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -18,7 +18,7 @@ const images = [
   'https://a0.muscache.com/im/pictures/miso/Hosting-645614243188847606/original/088046ea-d106-4036-a216-c269900b9a79.jpeg?im_w=720',
 ]
 
-export default function App() {
+export default function DetailScreen({navigation}) {
   return (
     <View style={{flex: 1}}>
       <ScrollView>
@@ -77,10 +77,19 @@ export default function App() {
           <View style={{paddingLeft: 20, paddingRight: 20}}>
               <Text style={{fontSize: 20, fontWeight: '800'}}>Mô tả</Text>
               <Text style={{textAlign: 'justify',lineHeight: 23, marginTop: 10, fontSize:15}}>Căn hộ “May Citadines Marina Hạ Long” nằm trong tổ hợp căn hộ với khách sạn tiêu chuẩn 5 sao “May CITADINES MARINA HẠ Long”, tọa lạc tại tầng 28, sở hữu vị trí đắc địa với tầm nhìn hướng ra vịnh Hạ Long, hứa hẹn sẽ mang đến cho bạn những trải nghiệm tuyệt vời nhất. Trải nghiệm tuyệt vời của một căn hộ nghỉ dưỡng đẳng cấp cho người dùng với đầy đủ tiện nghi như: phòng tập thể dục, hồ bơi trong nhà và ngoài trời với các tiện ích tiêu chuẩn quốc tế.</Text>
-              <Text style={{marginTop: 10, textDecorationLine: 'underline', fontSize: 15, color: 'rgba(0, 0, 0, 0.7)',
-                            paddingBottom: 30, borderBottomColor: '#bbb', borderBottomWidth: 1}}>Chi tiết {''}
-              <AntDesign name='down' style={{fontSize: 15}}></AntDesign>
+            
+            <Pressable onPress={() => {
+              console.log("chi tiết")
+            }}>
+              <Text style={{
+                marginTop: 10, textDecorationLine: 'underline', fontSize: 15, color: 'rgba(0, 0, 0, 0.7)',
+                paddingBottom: 30, borderBottomColor: '#bbb', borderBottomWidth: 1
+              }}>
+                Chi tiết {''}
+                <AntDesign name='down' style={{ fontSize: 15 }}></AntDesign>
+
               </Text>
+            </Pressable>
           </View>
 
           {/* ----------------Tiện ích------------------- */}

@@ -11,8 +11,88 @@
 import Icon from 'react-native-vector-icons/FontAwesome'
 import React from 'react';
 import { View, Text, StyleSheet,TouchableOpacity, Button, Image, ScrollView } from 'react-native';
+import { Pressable } from 'react-native';
+
+const data = {
+    "hotel":[
+        {
+            key: 1,
+            name:"Terracotta Hotel & Resort",
+            price:"1.290.000",
+            rating:"4.8",
+            image: require("../../../assets/about_us1.png")
+        },
+        {
+            key: 2,
+            name:"Terracotta Hotel & Resort",
+            price:"1.290.000",
+            rating:"4.8",
+            image: require("../../../assets/about_us1.png")
+        },
+    ]
+}
+
+let homeNavigation;
+
+const openDetail = () => {
+    homeNavigation?.navigate("DetailScreen");
+}
+
+const components = () => {
+    let list = []
+    for (const hotel of data.hotel) {
+        // random chance to push to the list is 50%
+        if (Math.random() < 0.5) {
+            list.push(
+                <View style={styles.section_img} key={hotel.key}>
+                    <Pressable onPress={openDetail}>
+                        <Image style={{
+                            width: '100%',
+                            height: 400,
+                            borderRadius: 20,
+                            marginBottom: '10%'
+                        }} source={hotel.image} />
+                        <Image style={{
+                            position: 'absolute',
+                            right: '2%',
+                            margin: '2%'
+                        }} source={require('../../../assets/icons8-heart-24.png')} />
+
+                        <Text style={{
+                            fontSize: 20,
+                            fontWeight: 'bold',
+                            letterSpacing: 0.5
+                        }}>{hotel.name}</Text>
+                        <View style={{
+                            flexDirection: 'row',
+                            width: '100%',
+                            marginTop: '5%'
+                        }}>
+                            <Text style={{
+                                width: '85%',
+                                fontSize: 16
+                            }}>VND {hotel.price}</Text>
+                            <View style={{
+                                flexDirection: 'row',
+                            }}>
+                                <Image style={{
+                                    height: 25,
+                                    width: 25,
+                                    marginRight: 10
+                                }} source={hotel.image} />
+                                <Text>{hotel.rating}</Text>
+                            </View>
+                        </View>
+                    </Pressable>
+                </View>
+            )
+        }
+    }
+    return list
+}
 
 const Home = ({navigation}) => {
+    homeNavigation = navigation;
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -59,87 +139,7 @@ const Home = ({navigation}) => {
                 </View>
 
                 <ScrollView >
-                    <View style={styles.section_img}>
-                            <Image style={{
-                                width: '100%',
-                                height: 400,
-                                borderRadius: 20,
-                                marginBottom: '10%'
-                            }} source={require('../../../assets/about_us1.png')} />
-                            <Image style={{
-                                position: 'absolute',
-                                right: '2%',
-                                margin: '2%'
-                            }} source={require('../../../assets/icons8-heart-24.png')} />
-
-                            <Text style={{
-                                fontSize: 20,
-                                fontWeight: 'bold',
-                                letterSpacing: 0.5
-                            }}>Terracotta Hotel & Resort</Text>
-                            <View style={{
-                                flexDirection: 'row',
-                                width: '100%',
-                                marginTop: '5%'
-                            }}>
-                                <Text style={{
-                                    width: '85%',
-                                    fontSize: 16
-                                }}>VND 1.290.000</Text>
-                                <View style={{
-                                    flexDirection: 'row',
-                                }}>
-                                    <Image style={{
-                                        height: 25,
-                                        width: 25,
-                                        marginRight: 10
-                                    }} source={require('../../../assets/about_us1.png')} />
-                                    <Text>4.8</Text>
-                                </View>
-                            </View>
-                    </View>
-
-                    <View style={styles.section_img}>
-                        <Image style={{
-                            width: '100%',
-                            height: 400,
-                            borderRadius: 20,
-                            marginBottom: '10%'
-                        }} source={require('../../../assets/about_us1.png')} />
-                        <Image style={{
-                            position: 'absolute',
-                            right: '2%',
-                            margin: '2%'
-                        }} source={require('../../../assets/icons8-heart-24.png')} />
-
-                        <Text style={{
-                            fontSize: 20,
-                            fontWeight: 'bold',
-                            letterSpacing: 0.5
-                        }}>Terracotta Hotel & Resort</Text>
-                        <View style={{
-                            flexDirection: 'row',
-                            width: '100%',
-                            marginTop: '5%'
-                        }}>
-                            <Text style={{
-                                width: '85%',
-                                fontSize: 16
-                            }}>VND 1.290.000</Text>
-                            <View style={{
-                                flexDirection: 'row',
-                            }}>
-                                <Image style={{
-                                    height: 25,
-                                    width: 25,
-                                    marginRight: 10
-                                }} source={require('../../../assets/about_us1.png')} />
-                                <Text>4.8</Text>
-                            </View>
-                        </View>
-                    </View>
-                    
-                    
+                    {components()}
                 </ScrollView>
                 
             </View>
