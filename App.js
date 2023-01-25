@@ -4,6 +4,7 @@ import Welcome from './src/views/Welcome';
 import Search from './src/views/Search';
 import DetailScreen from './src/views/DetailScreen';
 import Home from './src/views/Home';
+import ReviewPage from './src/views/Review/review.js';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useRef, useState, Component, Fragment} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name="Search" component={Search} />
         <Stack.Screen name="DetailScreen" component={DetailScreen} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Reviews" component={ReviewPage} />
       </Stack.Navigator>
     </NavigationContainer> 
   );

@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import react from 'react';
 
-const ReviewPage = () => {
+const ReviewPage = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.fixed_heading}>

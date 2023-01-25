@@ -19,6 +19,9 @@ const images = [
 ]
 
 export default function DetailScreen({navigation}) {
+  let displayReviews = () => {
+    navigation.navigate("Reviews");
+  }
   return (
     <View style={{flex: 1}}>
       <ScrollView>
@@ -77,19 +80,6 @@ export default function DetailScreen({navigation}) {
           <View style={{paddingLeft: 20, paddingRight: 20}}>
               <Text style={{fontSize: 20, fontWeight: '800'}}>Mô tả</Text>
               <Text style={{textAlign: 'justify',lineHeight: 23, marginTop: 10, fontSize:15}}>Căn hộ “May Citadines Marina Hạ Long” nằm trong tổ hợp căn hộ với khách sạn tiêu chuẩn 5 sao “May CITADINES MARINA HẠ Long”, tọa lạc tại tầng 28, sở hữu vị trí đắc địa với tầm nhìn hướng ra vịnh Hạ Long, hứa hẹn sẽ mang đến cho bạn những trải nghiệm tuyệt vời nhất. Trải nghiệm tuyệt vời của một căn hộ nghỉ dưỡng đẳng cấp cho người dùng với đầy đủ tiện nghi như: phòng tập thể dục, hồ bơi trong nhà và ngoài trời với các tiện ích tiêu chuẩn quốc tế.</Text>
-            
-            <Pressable onPress={() => {
-              console.log("chi tiết")
-            }}>
-              <Text style={{
-                marginTop: 10, textDecorationLine: 'underline', fontSize: 15, color: 'rgba(0, 0, 0, 0.7)',
-                paddingBottom: 30, borderBottomColor: '#bbb', borderBottomWidth: 1
-              }}>
-                Chi tiết {''}
-                <AntDesign name='down' style={{ fontSize: 15 }}></AntDesign>
-
-              </Text>
-            </Pressable>
           </View>
 
           {/* ----------------Tiện ích------------------- */}
@@ -203,7 +193,7 @@ export default function DetailScreen({navigation}) {
               </View>
             </ScrollView>
 
-            <Button title="Hiển thị tất cả 168 đánh giá" color="#e11960" ></Button>
+            <Button title="Hiển thị tất cả 168 đánh giá" color="#e11960" onPress={displayReviews} ></Button>
           </View>
 
           {/* -------------------Vị trí + địa điểm lân cận---------------- */}
