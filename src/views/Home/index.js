@@ -1,13 +1,3 @@
-// this is home - main screen of the app
-// it has a header whose width is 100% of the screen
-// header height is 22% of the screen, min height is 86px
-// header has 4 sections: arrive date, depart date, guests, back button
-// all 4 sections are 25% of the screen width
-// and a footer whose width is 100% of the screen
-// footer height is 6% of the screen, min height is 56px
-// footer has 3 sections: home (this screen), love, profile
-// and a body whose width is 100% of the screen
-// make this page become a function and return the component instead of class
 import Icon from 'react-native-vector-icons/FontAwesome'
 import React from 'react';
 import { View, Text, StyleSheet,TouchableOpacity, Button, Image, ScrollView } from 'react-native';

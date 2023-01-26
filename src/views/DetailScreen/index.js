@@ -19,6 +19,9 @@ const images = [
 ]
 
 export default function DetailScreen({navigation}) {
+  let bookRoom = () => {
+    navigation.navigate("BookRoom");
+  }
   let displayReviews = () => {
     navigation.navigate("Reviews");
   }
@@ -283,7 +286,9 @@ export default function DetailScreen({navigation}) {
               </Text>
               
               <View style={{height: 70, width: 200, backgroundColor: '#e11960', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8}}>
-                <Text style={{color: '#fff', fontSize: 20}}>Chọn phòng</Text>
+                <Pressable onPress={bookRoom}>
+                  <Text style={{color: '#fff', fontSize: 20}}>Chọn phòng</Text>
+                </Pressable>
               </View>
 
             </View>

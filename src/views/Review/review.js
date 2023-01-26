@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     heading: {
         paddingHorizontal: '5%',
         fontSize: 20,
-        fontWeight: 'medium',
+        fontWeight: 'normal',
         textAlign: 'left',
     },
     review: {

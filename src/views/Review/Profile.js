@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     heading_profile: {
         fontSize: 30,
-        fontWeight: 'medium',
+        fontWeight: 'normal',
         paddingBottom: '12%',
     },
     avatar: {

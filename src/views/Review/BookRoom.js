@@ -3,7 +3,7 @@ import { Button } from '@rneui/base';
 import { StyleSheet, Text, View, Image, ScrollView,TouchableOpacity, Pressable } from 'react-native';
 import react from 'react';
 
-const BookRoom = () => {
+const BookRoom = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.fixed_heading}>
@@ -23,7 +23,7 @@ const BookRoom = () => {
                         flex: 2,
                         textAlign: 'right',
                         fontSize: 20,
-                        fontWeight: 'medium',
+                        fontWeight: 'normal',
                     }}>Terracotta Hotel & Resort Đà Lạt</Text>
                 </View>
 
@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         padding: 10,
         backgroundColor: '#ff0f4c',
-        fontWeight: 'medium',
+        fontWeight: 'normal',
         borderRadius: 10,
     },
 

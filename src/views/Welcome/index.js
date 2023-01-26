@@ -1,8 +1,13 @@
 import {Text, View,StyleSheet } from 'react-native';
 import Buttons from '../../components/Buttons';
 import { Image } from 'react-native';
+import React from 'react';
+import { UNSTABLE_usePreventRemove as usePreventRemove } from '@react-navigation/native';
 
 const Welcome = ({navigation})=>{
+    // use usePreventRemove to prevent the user from leaving the screen
+    usePreventRemove(true, (data) => {});
+
     const start = ()=>{
         navigation.navigate('Search')
     }
