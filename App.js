@@ -1,4 +1,4 @@
- vimport Intro from './src/views/Intro';
+import Intro from './src/views/Intro';
 import LoginScreen from './src/views/LoginScreen';
 import Welcome from './src/views/Welcome';
 import Search from './src/views/Search';

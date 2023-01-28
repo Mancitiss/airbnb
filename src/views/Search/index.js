@@ -16,7 +16,7 @@ const Search = ({navigation})=>{
       console.log(count)
       console.log(stayDate)
       console.log(returnDate)
-      navigation.navigate('DetailScreen')
+      navigation.navigate('Home')
     }
     const [validChild,setValidChild] = useState(true)
     const [validAdult,setValidAdult] = useState(true)
