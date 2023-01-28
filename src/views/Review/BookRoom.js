@@ -1,10 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button } from '@rneui/base';
-import { StyleSheet, Text, View, Image, ScrollView,TouchableOpacity, Pressable } from 'react-native';
-import react from 'react';
+import TextInputField from '../../../src/views/components/TextInputField/index.js';
+import { StyleSheet, Text, View, Image, ScrollView,TouchableOpacity, Pressable, Button } from 'react-native';
+import react, {useState} from 'react';
 
 const BookRoom = () => {
+    const [stayDate, setStayDate] = useState()
+    const [returnDate, setReturnDate] = useState()
     return (
+
         <View style={styles.container}>
             <View style={styles.fixed_heading}>
                 <Image style={styles.back_button} source={require('../../../assets/icons8-chevron-left-20.png')} />
@@ -12,6 +15,7 @@ const BookRoom = () => {
             </View>
             <ScrollView style={{
                 marginBottom: '15%',
+
             }}>
                 <View style={styles.intro_hotel}>
                     <Image style={{
@@ -32,30 +36,48 @@ const BookRoom = () => {
                     <View style={styles.column}>
                         <View style={styles.small_section}>
                             <Text style={styles.small_heading}>Lịch</Text>
-                            <Text>06 - 08 JAN</Text>
+
+                            <View style={{
+                                flexDirection: 'row',
+                                width: '100%',
+                                }}>
+                                <TextInputField
+                                    keyboardType='date-pad'
+                                    defaultValue={stayDate}
+                                    onChange={(date) => {
+                                        setStayDate(date)
+                                    }}
+                                    placeholder='Ngày nhận phòng'
+                                />
+                                <Text style={{padding:20}}>
+                                    đến
+                                </Text>
+                                <TextInputField
+                                    keyboardType='date-pad'
+                                    defaultValue={stayDate}
+                                    onChange={(date) => {
+                                        setStayDate(date)
+                                    }}
+                                    placeholder='Ngày trả phòng'
+                                />
+                            </View>
+                            
                         </View>
-                        <Pressable>
-                            <Text style={{
-                                textAlign: 'right',
-                                flex: 2,
-                                textDecorationLine: 'underline',
-                                fontWeight: 'bold',
-                            }}>Chỉnh sửa</Text>
-                        </Pressable>
 
                         
                     </View>
                     <View style={styles.column}>
                         <View style={styles.small_section}>
-                            <Text style={styles.small_heading}>Khách</Text>
+                            <Text style={styles.small_heading}>Loại phòng</Text>
                             <Text>02 người</Text>
                         </View>
-                        <Text style={{
-                            textAlign: 'right',
-                            flex: 2,
+                        <TouchableOpacity>
+                            <Text style={{
                             textDecorationLine: 'underline',
                             fontWeight: 'bold',
                         }}>Chỉnh sửa</Text>
+                        </TouchableOpacity>
+                        
                     </View>
                 </View>
 
@@ -83,14 +105,14 @@ const BookRoom = () => {
                         <View style={styles.small_section}>
                             <Text style={{
                                 fontWeight: 'bold',
-                                color: '#ff0f4c',
+                                color: '#a88e8a',
                             }}>TỔNG</Text>
                         </View>
                         <Text style={{
                             textAlign: 'right',
                             flex: 2,
                             fontWeight: 'bold',
-                            color: '#ff0f4c',
+                            color: '#a88e8a',
                         }}>VND 11.350.000</Text>
                     </View>
                     <View style={styles.column}>
@@ -116,28 +138,9 @@ const BookRoom = () => {
                             fontSize: 18,
                             color: '#73777B'
                         }}>Phương thức thanh toán</Text>
-                        <TouchableOpacity>                 
-                            <Button
-                                type="outline"
-                                buttonStyle={{ width: 80 }}
-                                containerStyle={{ margin: 3}}
-                                disabled
-                                disabledStyle={{
-                                    borderWidth: 1,
-                                    borderColor: "#ff0f4c",
-                                    borderRadius: 5,
-                                }}
-                                disabledTitleStyle={{ color: "#ff0f4c" }}
-                                linearGradientProps={null}
-                                loadingProps={{ animating: true }}
-                                loadingStyle={{}}
-                                title="Thêm"
-                                style={{
-                                    width: "30%",  
-                                }}
-                                
-                            />
-                    </TouchableOpacity>
+                        <TouchableOpacity style={styles.btn_add_outline}>
+                            <Text style={styles.btn_add}>THÊM</Text>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={{
@@ -193,27 +196,8 @@ const BookRoom = () => {
                             <Text style={styles.small_heading}>Nhắn tin cho khách san</Text>
                             <Text>Để lại lời nhắn cho khách sạn về thời điểm nhận phòng của bạn</Text>
                         </View>
-                        <TouchableOpacity>
-                            <Button
-                                type="outline"
-                                buttonStyle={{ width: 80 }}
-                                containerStyle={{ margin: 3 }}
-                                disabled
-                                disabledStyle={{
-                                    borderWidth: 1,
-                                    borderColor: "#ff0f4c",
-                                    borderRadius: 5,
-                                }}
-                                disabledTitleStyle={{ color: "#ff0f4c" }}
-                                linearGradientProps={null}
-                                loadingProps={{ animating: true }}
-                                loadingStyle={{}}
-                                title="Thêm"
-                                style={{
-                                    width: "30%",
-                                }}
-
-                            />
+                        <TouchableOpacity style={styles.btn_add_outline}>
+                            <Text style={styles.btn_add}>THÊM</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -233,27 +217,8 @@ const BookRoom = () => {
                             <Text style={styles.small_heading}>Số điện thoại</Text>
                             <Text>Thêm và xác nhận số điện thoại của bạn để nhận thông tin cập nhật của chuyến đi.</Text>
                         </View>
-                        <TouchableOpacity>
-                            <Button
-                                type="outline"
-                                buttonStyle={{ width: 80 }}
-                                containerStyle={{ margin: 3 }}
-                                disabled
-                                disabledStyle={{
-                                    borderWidth: 1,
-                                    borderColor: "#ff0f4c",
-                                    borderRadius: 5,
-                                }}
-                                disabledTitleStyle={{ color: "#ff0f4c" }}
-                                linearGradientProps={null}
-                                loadingProps={{ animating: true }}
-                                loadingStyle={{}}
-                                title="Thêm"
-                                style={{
-                                    width: "30%",
-                                }}
-
-                            />
+                        <TouchableOpacity style={styles.btn_add_outline}>
+                            <Text style={styles.btn_add}>THÊM</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -286,7 +251,9 @@ const BookRoom = () => {
                         height: 40,
                         width: 40,
                         
-                    }} source={require('../../../assets/icons8-hourglass-100.png')} />
+
+                    }} source={require('../../../assets/icons8-sand-timer-50.png')} />
+
                     <Text style={{
                         lineHeight: 20,
                     }}>Phòng bạn đặt sẽ không được xác nhận cho đến khi 
@@ -336,8 +303,8 @@ const styles = StyleSheet.create({
         paddingLeft: '5%',
         paddingBottom: '3%',
         marginBottom: '5%',
+        marginRight: '5%',
         justifyContent: 'center',
-        width: '95%',
 
     },
     fixed_heading: {
@@ -378,11 +345,12 @@ const styles = StyleSheet.create({
         marginBottom: '5%'
     },
     small_section:{
+        flex: 2,
         paddingBottom: '5%',
     },
     small_heading:{
         fontWeight: 'bold',
-        marginBottom: '2%',
+        // marginBottom: '2%',
     },
     btn_book: {
         marginTop: '5%',
@@ -392,9 +360,18 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         padding: 10,
-        backgroundColor: '#ff0f4c',
+        backgroundColor: '#a88e8a',
         fontWeight: 'medium',
         borderRadius: 10,
+    },
+    btn_add_outline:{
+        borderWidth: 1,
+        borderColor: '#a88e8a',
+        borderRadius: 5,
+    },
+    btn_add:{
+        padding: 10,
+        color: '#a88e8a',
     },
 
     

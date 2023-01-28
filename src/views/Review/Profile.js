@@ -8,7 +8,7 @@ const Profile = () =>{
         <View style={styles.container}>
             <Text style={styles.heading_profile}>HỒ SƠ</Text>
             <View style={styles.avatar}>
-                <Image style={styles.avatar_profile} source={require('../../../assets/about_us1.png')} />
+                <Image style={styles.avatar_profile} source={require('../../../assets/customer-girl(3).png')} />
                 <Text style={styles.avatar_name}>Hiền Trần</Text>
             </View>
 
