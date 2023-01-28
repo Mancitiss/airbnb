@@ -8,22 +8,22 @@ const Profile = () =>{
         <View style={styles.container}>
             <Text style={styles.heading_profile}>HỒ SƠ</Text>
             <View style={styles.avatar}>
-                <Image style={styles.avatar_profile} source={require('../assets/about_us1.png')} />
+                <Image style={styles.avatar_profile} source={require('../../../assets/customer-girl(3).png')} />
                 <Text style={styles.avatar_name}>Hiền Trần</Text>
             </View>
 
             <Pressable style={styles.btn_key}>
-                <Image style={styles.btn_icon} source={require('../assets/icons8-key-security-50.png')} />
+                <Image style={styles.btn_icon} source={require('../../../assets/icons8-key-security-50.png')} />
                 <Text style={styles.btn_text}>Chìa khóa của tôi</Text>
             </Pressable>
 
             <Pressable style={styles.btn_key}>
-                <Image style={styles.btn_icon} source={require('../assets/icons8-settings-50.png')} />
+                <Image style={styles.btn_icon} source={require('../../../assets/icons8-settings-50.png')} />
                 <Text style={styles.btn_text}>Cài đặt</Text>
             </Pressable>
 
             <Pressable style={styles.btn_key}>
-                <Image style={styles.btn_icon} source={require('../assets/icons8-ringer-volume-50.png')} />
+                <Image style={styles.btn_icon} source={require('../../../assets/icons8-ringer-volume-50.png')} />
                 <Text style={styles.btn_text}>Trung tâm hỗ trợ</Text>
             </Pressable>
 

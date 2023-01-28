@@ -14,14 +14,15 @@ const TextInputField = (props) => {
   );
 };
 const styles = StyleSheet.create({
-    marginTop:50,
-    fontSize:20,
+    // marginRight: 30,
+    fontSize:15,
     color:'#000000',
     opacity:0.7,
     height:36,
-    width: '100%',
+    width: '40%',
     borderColor: 'rgba(112, 112, 112,0.7)',
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+
 });
 
 export default TextInputField;
