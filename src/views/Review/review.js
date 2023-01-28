@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import react from 'react';
 
-const Review = () => {
+const ReviewPage = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.fixed_heading}>
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     heading: {
         paddingHorizontal: '5%',
         fontSize: 20,
-        fontWeight: 'medium',
+        fontWeight: 'normal',
         textAlign: 'left',
     },
     review: {
@@ -187,4 +187,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Review;
+export default ReviewPage

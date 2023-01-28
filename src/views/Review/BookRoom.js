@@ -15,7 +15,6 @@ const BookRoom = () => {
             </View>
             <ScrollView style={{
                 marginBottom: '15%',
-
             }}>
                 <View style={styles.intro_hotel}>
                     <Image style={{
@@ -27,7 +26,7 @@ const BookRoom = () => {
                         flex: 2,
                         textAlign: 'right',
                         fontSize: 20,
-                        fontWeight: 'medium',
+                        fontWeight: 'normal',
                     }}>Terracotta Hotel & Resort Đà Lạt</Text>
                 </View>
 
