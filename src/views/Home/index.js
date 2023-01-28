@@ -2,6 +2,8 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import React from 'react';
 import { View, Text, StyleSheet,TouchableOpacity, Button, Image, ScrollView } from 'react-native';
 import { Pressable } from 'react-native';
+import { EvilIcons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons'; 
 
 const data = {
     "hotel":[
@@ -135,31 +137,21 @@ const Home = ({navigation}) => {
             </View>
             <View style={styles.footer}>
                 <View style={{alignItems: 'center', marginLeft: '5%'}}>
-                    <Image style={{
-                        height: 25,
-                        width: 25,
-                    }} source={require('../../../assets/icons8-home-32.png')} />
+                    <Ionicons name="home-outline" size={16} color="black" />
                     <Text>Khám phá</Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
-                    <Image style={{
-                        height: 25,
-                        width: 25,
-                    }} source={require('../../../assets/icons8-heart-24.png')} />
+                    <EvilIcons name="heart" size={25} color="black" />
                     <Text style={{ color: '#73777B' }}>Yêu thích</Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
-                    <Image style={{
-                        height: 25,
-                        width: 25,
-                    }} source={require('../../../assets/icons8-search-48.png')} />
-                    <Text style={{ color: '#73777B' }}>Tìm kiếm</Text>
+                    <Pressable style={{ alignItems: 'center' }} onPress={() => navigation.navigate('Search')}>
+                        <EvilIcons name="search" size={25} color="black" />
+                        <Text style={{ color: '#73777B' }}>Tìm kiếm</Text>
+                    </Pressable>
                 </View>
                 <View style={{ alignItems: 'center', marginRight: '5%' }}>
-                    <Image style={{
-                        height: 25,
-                        width: 25,
-                    }} source={require('../../../assets/icons8-male-user-16.png')} />
+                    <EvilIcons name="user" size={25} color="black" />
                     <Text style={{ color: '#73777B' }}>Hồ sơ</Text>
                 </View>
             </View>
