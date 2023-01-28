@@ -3,6 +3,9 @@ import React, {useEffect, useRef, useState, Component, Fragment} from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, Icon, Button, Pressable } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import TextInputField from '../../components/TextInputField';
+
+
 
 const images = [
   'https://a0.muscache.com/im/pictures/33e52704-0cbb-4956-9615-833c37e9b9a0.jpg?im_w=1200',
@@ -25,21 +28,27 @@ export default function DetailScreen({navigation}) {
   let displayReviews = () => {
     navigation.navigate("Reviews");
   }
+  
+  const [stayDate,setStayDate] = useState()
+  const [returnDate,setReturnDate] = useState()
+
   return (
     <View style={{flex: 1}}>
-      <View style={{display: 'flex', flexDirection: "row" ,justifyContent: 'space-between',
-        zIndex: 1000, position: 'absolute', top: 30, right: 0}}>
-        <AntDesign name='left' style={{width: 40,color: 'black', fontSize: 25, left: -330, paddingTop: 7, paddingBottom:7, paddingLeft: 6, backgroundColor: 'white', borderRadius: 50}}></AntDesign>
-        <View style={{right: 20, display: 'flex', flexDirection: 'row'}}>
-          <AntDesign name='sharealt' style={{width: 40,color: 'black', fontSize: 25, elevation: 100, marginRight: 10, paddingTop: 7, paddingBottom:7, paddingLeft: 6, backgroundColor: 'white', borderRadius: 50}}></AntDesign>
-          <AntDesign name='heart' style={{width: 40,height: 40,color: 'black', fontSize: 25, elevation: 100, paddingTop: 8, paddingBottom:7, paddingLeft: 7, backgroundColor: 'white', borderRadius: 50}}></AntDesign>
+      <View style={{width: '100%', height: 80, borderBottomColor: '#bbb', borderBottomWidth: 3}}>
+        <View style={{display: 'flex', flexDirection: "row" ,justifyContent: 'space-between',
+          zIndex: 1000, position: 'absolute', top: 30, right: 0}}>
+          <AntDesign name='left' style={{width: 40,color: 'black', fontSize: 25, left: -330, paddingTop: 7, paddingBottom:7, paddingLeft: 6}}></AntDesign>
+          <View style={{right: 20, display: 'flex', flexDirection: 'row'}}>
+            <AntDesign name='sharealt' style={{width: 40,color: 'black', fontSize: 25, marginRight: 10, paddingTop: 7, paddingBottom:7, paddingLeft: 6}}></AntDesign>
+            <AntDesign name='heart' style={{width: 40,height: 40,color: 'black', fontSize: 25, paddingTop: 8, paddingBottom:7, paddingLeft: 7}}></AntDesign>
+          </View>
         </View>
       </View>
       <ScrollView>
         <View>
 
           {/* --------------slider-------------- */}
-          <View style={{position: 'relative', top: 0}}>
+          <View style={{position: 'relative', top: -5}}>
             <SliderBox style={{height: 300}}
             images={images}
             // circleloop={true}
@@ -51,7 +60,7 @@ export default function DetailScreen({navigation}) {
             autoplayInterval={3000}
             paginationBoxVerticalPadding={10} />
 
-            {/* header was here */}
+            
           </View>
           
           {/* ---------------title------------- */}
@@ -122,7 +131,6 @@ export default function DetailScreen({navigation}) {
               </View>
           </View>
 
-
           {/* ---------------Review------------------ */}
           <View style={{padding: 25}}>
             <Text style={{paddingTop: 20, borderTopColor: '#bbb', borderTopWidth: 1, paddingBottom: 20}}>
@@ -190,14 +198,9 @@ export default function DetailScreen({navigation}) {
                 Chỗ ở tuyệt đẹp, view thoáng. Chủ căn hộ suport nhiệt tình. Có thời gian nghỉ dưỡng rất vui tại đây
                 </Text>
               </View>
-              
-              <View style={{ width: 225, height: 225, borderColor: '#000', borderWidth: 1,
-                            marginRight: 20, borderRadius: 20, flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{textDecorationLine: 'underline', fontSize: 15}} >Hiển thị tất cả 168 đánh giá</Text>
-              </View>
             </ScrollView>
 
-            <Button title="Hiển thị tất cả 168 đánh giá" color="#e11960" onPress={displayReviews} ></Button>
+            <Button title="Hiển thị tất cả 168 đánh giá" color="#a88e8a" onPress={displayReviews} ></Button>
           </View>
 
           {/* -------------------Vị trí + địa điểm lân cận---------------- */}
@@ -278,23 +281,52 @@ export default function DetailScreen({navigation}) {
                 </View>
             </View>   
           </View>   
+
         </View>
       </ScrollView>
-      <View style={{ width: '100%', paddingLeft: 20, paddingRight: 20, borderTopColor: '#bbb', borderTopWidth: 3}}>
-            <View style={{height: 150, display: 'flex', flexDirection: 'row' ,justifyContent: 'space-between', alignItems: 'center'}}>
-              <Text style={{lineHeight: 40, fontSize: 20, paddingTop: 10}}>Giá phòng / đêm / từ {'\n'}
-                <Text style= {{color: '#e11960',fontSize: 25, fontWeight: '700'}}>VND 2.190.000 {'\n'}</Text>
-                <Text style={{textDecorationLine: 'underline', fontWeight: '700', fontSize: 20}}>03 - 08 JAN {'\n'}</Text>
+          <View style={{ width: '100%', paddingLeft: 20, paddingRight: 20, borderTopColor: '#bbb', borderTopWidth: 3}}>
+            <View style={{height: 160, display: 'flex', flexDirection: 'row' ,justifyContent: 'space-between', alignItems: 'center'}}>
+              <Text style={{fontSize: 20}}>Giá phòng / đêm / từ {'\n'}
+                <Text style= {{color: '#a88e8a',fontSize: 25, fontWeight: '700'}}>VND 2.190.000 {'\n'}</Text>
+                
+                <View style={{marginTop:25}}></View>
+                <Text style={{fontSize: 30}}></Text>
+                <View style={{marginTop:14}}></View>
+                <TextInputField 
+                keyboardType ='date-pad'
+                defaultValue =  {stayDate}
+                onChange={(date)=>{
+                  setStayDate(date)
+                }}
+                /> {'\n'}
+                
+                <View style={{marginTop:25}}></View>
+                <Text style={{fontSize: 30}}></Text>
+                <View style={{marginTop:14}}></View>
+                <TextInputField
+                keyboardType ='date-pad'
+                defaultValue = {returnDate}
+                onChange={(date)=>{
+                  setReturnDate(date)
+                }}
+                />
               </Text>
               
-              <View style={{height: 70, width: 200, backgroundColor: '#e11960', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8}}>
-                <Pressable onPress={bookRoom}>
-                  <Text style={{color: '#fff', fontSize: 20}}>Chọn phòng</Text>
-                </Pressable>
+              <View>
+                <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                  <Text style={{textDecorationLine: 'underline line', marginBottom: 20, fontSize: 20}}>Chọn loại phòng</Text>
+                  <Image source={require('./assets/icon-up.png')} style={{width: 20, height: 20, marginBottom: 15, marginLeft: 5}} />
+                </View>
+                <View style={{height: 70, width: 200, backgroundColor: '#a88e8a', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8}}>
+                  <Pressable onPress={bookRoom}>
+                    <Text style={{color: '#fff', fontSize: 20}}>Chọn phòng</Text>
+                  </Pressable>
+                </View>
               </View>
 
             </View>
           </View>
+      
     </View>
    
   )
