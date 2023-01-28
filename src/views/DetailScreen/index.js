@@ -314,7 +314,7 @@ export default function DetailScreen({navigation}) {
               
               <View>
                 <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                  <Text style={{textDecorationLine: 'underline line', marginBottom: 20, fontSize: 20}}>Chọn loại phòng</Text>
+                  <Text style={{textDecorationLine: 'underline', marginBottom: 20, fontSize: 20}}>Chọn loại phòng</Text>
                   <Image source={require('./assets/icon-up.png')} style={{width: 20, height: 20, marginBottom: 15, marginLeft: 5}} />
                 </View>
                 <View style={{height: 70, width: 200, backgroundColor: '#a88e8a', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8}}>
