@@ -9,9 +9,41 @@ import SelectDropdown from 'react-native-select-dropdown'
 
 let homeNavigation;
 
+const organize = (list, data, filter, sort) => {
+    return list.sort((a, b) => {
+        if (sort === 'Phổ biến nhất') {
+            return 0
+        }
+        else if (sort === 'Giá thấp nhất') {
+            return data.hotel[a.key-1].price_value - data.hotel[b.key-1].price_value
+        }
+        else if (sort === 'Giá cao nhất') {
+            return data.hotel[b.key-1].price_value - data.hotel[a.key-1].price_value
+        }
+        else if (sort === 'Đánh giá cao nhất') {
+            return data.hotel[b.key-1].rating - data.hotel[a.key-1].rating
+        }
+        else if (sort === 'Đánh giá thấp nhất') {
+            return data.hotel[a.key-1].rating - data.hotel[b.key-1].rating
+        }
+        else if (sort === 'Địa điểm gần nhất') {
+            return data.hotel[a.key-1].distance - data.hotel[b.key-1].distance
+        }
+    }).filter((item) => {
+        if (filter === 'Tất cả') {
+            return true
+        }
+        else {
+            return data.hotel[item.key-1].type === filter
+        }
+    })
+}
+
 const Home = (props) => {
     const navigation = props.navigation
-    const [displayList, setDisplayList] = useState(props.route.params.list)
+    const [filter, setFilter] = useState('Tất cả')
+    const [sort, setSort] = useState('Phổ biến nhất')
+    const displayList = organize(props.route.params.list, props.route.params.data, filter, sort)
     homeNavigation = navigation;
     return (
         <View style={styles.container}>
@@ -34,12 +66,7 @@ const Home = (props) => {
                         data={[{ id: 1, name: 'Tất cả' }, { id: 2, name: 'Nhà riêng' },{ id: 3, name: 'Khu nghỉ dưỡng'}, { id: 4, name: 'Homestay' }, { id: 5, name: 'Khách sạn' }, { id: 6, name: 'Căn hộ' }, { id: 7, name: 'Biệt thự' }, { id: 8, name: 'Nhà nghỉ'} ]}
                         onSelect={(selectedItem, index) => {
                             console.log(selectedItem, index)
-                            if (selectedItem.name !== 'Tất cả') {
-                                setDisplayList(props.route.params.list.filter(item => props.route.params.data.hotel[item.key-1].type === selectedItem.name))
-                            }
-                            else {
-                                setDisplayList(props.route.params.list)
-                            }
+                            setFilter(selectedItem.name)
                         }}
                         defaultValueByIndex={0}
                         renderDropdownIcon={() => {
@@ -68,10 +95,12 @@ const Home = (props) => {
                         rowTextStyle={styles.title}
                     />
                     <SelectDropdown
-                        data={[{ id: 1, name: 'Option 1' }, { id: 2, name: 'Option 2' }]}
+                        data={[{id: 1, name: "Phổ biến nhất"}, {id: 2, name: "Giá thấp nhất"}, {id: 3, name: "Giá cao nhất"}, {id: 4, name: "Đánh giá cao nhất"}, {id: 5, name: "Đánh giá thấp nhất"}, {id: 6, name: "Địa điểm gần nhất"}]}
                         onSelect={(selectedItem, index) => {
                             console.log(selectedItem, index)
+                            setSort(selectedItem.name)
                         }}
+                        defaultValueByIndex={0}
                         renderDropdownIcon={() => {
                             return (
                                 <Image
@@ -97,6 +126,7 @@ const Home = (props) => {
                         }}
                         rowTextStyle={styles.title}
                     />
+                    
                 </View>
 
                 <ScrollView >

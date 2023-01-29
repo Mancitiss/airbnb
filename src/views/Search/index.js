@@ -4,24 +4,29 @@ import TextInputField from '../../components/TextInputField';
 import { useState } from 'react';
 import { validateNumber } from '../../utils/input/number';
 import { Pressable } from 'react-native';
-
+import { FontAwesome } from '@expo/vector-icons'; 
+let searchNavigation;
 const data = {
   "hotel":[
       {
           key: 1,
           name:"Terracotta Hotel & Resort (KS)",
-          price:"1.290.000",
+          price:"1.300.000",
+          price_value: 1300000,
           rating:"4.8",
           image: require("../../../assets/about_us1.png"),
-          type: "Khách sạn"
+          type: "Khách sạn",
+          distance: 10
       },
       {
           key: 2,
           name:"Terracotta Hotel & Resort (NR)",
           price:"1.290.000",
+          price_value: 1290000,
           rating:"4.8",
           image: require("../../../assets/about_us1.png"),
-          type: "Nhà riêng"
+          type: "Nhà riêng",
+          distance: 20
       },
   ]
 }
@@ -67,11 +72,7 @@ const components = () => {
                           <View style={{
                               flexDirection: 'row',
                           }}>
-                              <Image style={{
-                                  height: 25,
-                                  width: 25,
-                                  marginRight: 10
-                              }} source={hotel.image} />
+                              <FontAwesome name="star" size={16} color="pink" />
                               <Text>{hotel.rating}</Text>
                           </View>
                       </View>
