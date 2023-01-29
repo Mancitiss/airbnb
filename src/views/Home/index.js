@@ -3,87 +3,47 @@ import React from 'react';
 import { View, Text, StyleSheet,TouchableOpacity, Button, Image, ScrollView } from 'react-native';
 import { Pressable } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons'; 
-import { Ionicons } from '@expo/vector-icons'; 
-
-const data = {
-    "hotel":[
-        {
-            key: 1,
-            name:"Terracotta Hotel & Resort",
-            price:"1.290.000",
-            rating:"4.8",
-            image: require("../../../assets/about_us1.png")
-        },
-        {
-            key: 2,
-            name:"Terracotta Hotel & Resort",
-            price:"1.290.000",
-            rating:"4.8",
-            image: require("../../../assets/about_us1.png")
-        },
-    ]
-}
+import { Ionicons } from '@expo/vector-icons';
+import { useState } from 'react';
+import SelectDropdown from 'react-native-select-dropdown'
 
 let homeNavigation;
 
-const openDetail = () => {
-    homeNavigation?.navigate("DetailScreen");
-}
-
-const components = () => {
-    let list = []
-    for (const hotel of data.hotel) {
-        // random chance to push to the list is 50%
-        if (Math.random() < 0.5) {
-            list.push(
-                <View style={styles.section_img} key={hotel.key}>
-                    <Pressable onPress={openDetail}>
-                        <Image style={{
-                            width: '100%',
-                            height: 400,
-                            borderRadius: 20,
-                            marginBottom: '10%'
-                        }} source={hotel.image} />
-                        <Image style={{
-                            position: 'absolute',
-                            right: '2%',
-                            margin: '2%'
-                        }} source={require('../../../assets/icons8-heart-24.png')} />
-
-                        <Text style={{
-                            fontSize: 20,
-                            fontWeight: 'bold',
-                            letterSpacing: 0.5
-                        }}>{hotel.name}</Text>
-                        <View style={{
-                            flexDirection: 'row',
-                            width: '100%',
-                            marginTop: '5%'
-                        }}>
-                            <Text style={{
-                                width: '85%',
-                                fontSize: 16
-                            }}>VND {hotel.price}</Text>
-                            <View style={{
-                                flexDirection: 'row',
-                            }}>
-                                <Image style={{
-                                    height: 25,
-                                    width: 25,
-                                    marginRight: 10
-                                }} source={hotel.image} />
-                                <Text>{hotel.rating}</Text>
-                            </View>
-                        </View>
-                    </Pressable>
-                </View>
-            )
+const organize = (list, data, filter, sort) => {
+    return list.sort((a, b) => {
+        if (sort === 'Phổ biến nhất') {
+            return 0
         }
-    }
-    return list
+        else if (sort === 'Giá thấp nhất') {
+            return data.hotel[a.key-1].price_value - data.hotel[b.key-1].price_value
+        }
+        else if (sort === 'Giá cao nhất') {
+            return data.hotel[b.key-1].price_value - data.hotel[a.key-1].price_value
+        }
+        else if (sort === 'Đánh giá cao nhất') {
+            return data.hotel[b.key-1].rating - data.hotel[a.key-1].rating
+        }
+        else if (sort === 'Đánh giá thấp nhất') {
+            return data.hotel[a.key-1].rating - data.hotel[b.key-1].rating
+        }
+        else if (sort === 'Địa điểm gần nhất') {
+            return data.hotel[a.key-1].distance - data.hotel[b.key-1].distance
+        }
+    }).filter((item) => {
+        if (filter === 'Tất cả') {
+            return true
+        }
+        else {
+            return data.hotel[item.key-1].type === filter
+        }
+    })
 }
 
-const Home = ({navigation}) => {
+const Home = (props) => {
+    const navigation = props.navigation
+    const [filter, setFilter] = useState('Tất cả')
+    const [sort, setSort] = useState('Phổ biến nhất')
+    const displayList = organize(props.route.params.list, props.route.params.data, filter, sort)
     homeNavigation = navigation;
     return (
         <View style={styles.container}>
@@ -102,43 +62,84 @@ const Home = ({navigation}) => {
                     // marginTop: '3%',
                     marginBottom: '8%'
                     }}>
-                    <TouchableOpacity style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                    }}>
-                        <Text style={styles.title}>Bộ lọc</Text>
-                        <Image style={{
-                            width: 15,
-                            height: 15,
-                            marginLeft: '10%'
-                        }} source={require('../../../assets/icons8-expand-arrow-50.png')} />
-       
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                    }}>
-                        <Text style={styles.title}>Sắp xếp</Text>
-                        <Image style={{
-                            width: 15,
-                            height: 15,
-                            marginLeft: '10%'
-                        }} source={require('../../../assets/icons8-expand-arrow-50.png')} />
-
-                    </TouchableOpacity>
-
+                    <SelectDropdown
+                        data={[{ id: 1, name: 'Tất cả' }, { id: 2, name: 'Nhà riêng' },{ id: 3, name: 'Khu nghỉ dưỡng'}, { id: 4, name: 'Homestay' }, { id: 5, name: 'Khách sạn' }, { id: 6, name: 'Căn hộ' }, { id: 7, name: 'Biệt thự' }, { id: 8, name: 'Nhà nghỉ'} ]}
+                        onSelect={(selectedItem, index) => {
+                            console.log(selectedItem, index)
+                            setFilter(selectedItem.name)
+                        }}
+                        defaultValueByIndex={0}
+                        renderDropdownIcon={() => {
+                            return (
+                                <Image
+                                    style={{ width: 15, height: 15, marginLeft: '10%' }}
+                                    source={require('../../../assets/icons8-expand-arrow-50.png')}
+                                />
+                            )
+                        }}
+                        dropdownIconPosition="right"
+                        rowTextForSelection={(item, index) => {
+                            return item.name
+                        }}
+                        selectedRowStyle={{ backgroundColor: '#e0e0e0' }}
+                        buttonStyle={{ width: '50%' }}
+                        renderCustomizedButtonChild={(selectedItem, index) => {
+                            return (
+                                <View style={styles.dropdown2BtnChildStyle}>
+                                    <Text style={styles.title}>
+                                        {selectedItem ? selectedItem.name : 'Bộ lọc'}
+                                    </Text>
+                                </View>
+                            )
+                        }}
+                        rowTextStyle={styles.title}
+                    />
+                    <SelectDropdown
+                        data={[{id: 1, name: "Phổ biến nhất"}, {id: 2, name: "Giá thấp nhất"}, {id: 3, name: "Giá cao nhất"}, {id: 4, name: "Đánh giá cao nhất"}, {id: 5, name: "Đánh giá thấp nhất"}, {id: 6, name: "Địa điểm gần nhất"}]}
+                        onSelect={(selectedItem, index) => {
+                            console.log(selectedItem, index)
+                            setSort(selectedItem.name)
+                        }}
+                        defaultValueByIndex={0}
+                        renderDropdownIcon={() => {
+                            return (
+                                <Image
+                                    style={{ width: 15, height: 15, marginLeft: '10%' }}
+                                    source={require('../../../assets/icons8-expand-arrow-50.png')}
+                                />
+                            )
+                        }}
+                        dropdownIconPosition="right"
+                        rowTextForSelection={(item, index) => {
+                            return item.name
+                        }}
+                        selectedRowStyle={{ backgroundColor: '#e0e0e0' }}
+                        buttonStyle={{ width: '50%' }}
+                        renderCustomizedButtonChild={(selectedItem, index) => {
+                            return (
+                                <View style={styles.dropdown2BtnChildStyle}>
+                                    <Text style={styles.title}>
+                                        {selectedItem ? selectedItem.name : 'Sắp xếp'}
+                                    </Text>
+                                </View>
+                            )
+                        }}
+                        rowTextStyle={styles.title}
+                    />
+                    
                 </View>
 
                 <ScrollView >
-                    {components()}
+                    {displayList}
                 </ScrollView>
                 
             </View>
             <View style={styles.footer}>
                 <View style={{alignItems: 'center', marginLeft: '5%'}}>
-                    <Ionicons name="home-outline" size={16} color="black" />
-                    <Text>Khám phá</Text>
+                    <Pressable style={{ alignItems: 'center' }} onPress={() => homeNavigation.navigate("Home") }>
+                        <Ionicons name="home-outline" size={16} color="black" />
+                        <Text>Khám phá</Text>
+                    </Pressable>
                 </View>
                 <View style={{ alignItems: 'center' }}>
                     <EvilIcons name="heart" size={25} color="black" />
