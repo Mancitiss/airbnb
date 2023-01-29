@@ -1,22 +1,104 @@
-import {Text, View,StyleSheet,ScrollView } from 'react-native';
+import {Text, Image, View,StyleSheet,ScrollView } from 'react-native';
 import Buttons from '../../components/Buttons';
 import TextInputField from '../../components/TextInputField';
 import { useState } from 'react';
 import { validateNumber } from '../../utils/input/number';
+import { Pressable } from 'react-native';
+
+const data = {
+  "hotel":[
+      {
+          key: 1,
+          name:"Terracotta Hotel & Resort (KS)",
+          price:"1.290.000",
+          rating:"4.8",
+          image: require("../../../assets/about_us1.png"),
+          type: "Khách sạn"
+      },
+      {
+          key: 2,
+          name:"Terracotta Hotel & Resort (NR)",
+          price:"1.290.000",
+          rating:"4.8",
+          image: require("../../../assets/about_us1.png"),
+          type: "Nhà riêng"
+      },
+  ]
+}
+
+const openDetail = () => {
+  searchNavigation.navigate("DetailScreen", {});
+}
+
+const components = () => {
+  let list = []
+  for (const hotel of data.hotel) {
+      // random chance to push to the list is 50%
+      if (Math.random() < 0.5) {
+          list.push(
+              <View style={styles.section_img} key={hotel.key}>
+                  <Pressable onPress={openDetail}>
+                      <Image style={{
+                          width: '100%',
+                          height: 400,
+                          borderRadius: 20,
+                          marginBottom: '10%'
+                      }} source={hotel.image} />
+                      <Image style={{
+                          position: 'absolute',
+                          right: '2%',
+                          margin: '2%'
+                      }} source={require('../../../assets/icons8-heart-24.png')} />
+
+                      <Text style={{
+                          fontSize: 20,
+                          fontWeight: 'bold',
+                          letterSpacing: 0.5
+                      }}>{hotel.name}</Text>
+                      <View style={{
+                          flexDirection: 'row',
+                          width: '100%',
+                          marginTop: '5%'
+                      }}>
+                          <Text style={{
+                              width: '85%',
+                              fontSize: 16
+                          }}>VND {hotel.price}</Text>
+                          <View style={{
+                              flexDirection: 'row',
+                          }}>
+                              <Image style={{
+                                  height: 25,
+                                  width: 25,
+                                  marginRight: 10
+                              }} source={hotel.image} />
+                              <Text>{hotel.rating}</Text>
+                          </View>
+                      </View>
+                  </Pressable>
+              </View>
+          )
+      }
+  }
+  return list
+}
+
 const Search = ({navigation})=>{
-    global.place = ""
+    searchNavigation = navigation;
+    let place = ""
     let childQuantity = 0
     let adultQuantity = 0
     let count = 0
     const search=()=>{
       // navigate to detail
-      console.log(global.place)
+      console.log(place)
       console.log(childQuantity)
       console.log(adultQuantity)
       console.log(count)
       console.log(stayDate)
       console.log(returnDate)
-      navigation.navigate('Home')
+      let list = components()
+      navigation.navigate('Home', {place: place, list: list, data: data})
     }
     const [validChild,setValidChild] = useState(true)
     const [validAdult,setValidAdult] = useState(true)
@@ -26,10 +108,10 @@ const Search = ({navigation})=>{
     return(
         <ScrollView >
     <View style={styles.container}>
-      <Text style={styles.header} >địa diểm</Text>
+      <Text style={styles.header} >địa điểm</Text>
       <View style={{marginTop:14}}></View>
       <TextInputField placeholder='Chọn địa điểm bạn du lịch'
-      onChange={(text)=>{global.place=text}}
+      onChange={(text)=>{place=text}}
       />
 
       <View style={{marginTop:25}}></View>
