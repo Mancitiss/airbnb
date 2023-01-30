@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image, ScrollView, Icon, Button, Pressable } fr
 import { SliderBox } from 'react-native-image-slider-box';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../../components/TextInputField';
-
+import { EvilIcons } from '@expo/vector-icons';
 
 
 const images = [
@@ -33,169 +33,190 @@ export default function DetailScreen({navigation}) {
   const [returnDate,setReturnDate] = useState()
 
   return (
-    <View style={{flex: 1}}>
-      <View style={{width: '100%', height: 80, borderBottomColor: '#bbb', borderBottomWidth: 3}}>
-        <View style={{display: 'flex', flexDirection: "row" ,justifyContent: 'space-between',
-          zIndex: 1000, position: 'absolute', top: 30, right: 0}}>
-          <AntDesign name='left' style={{width: 40,color: 'black', fontSize: 25, left: -330, paddingTop: 7, paddingBottom:7, paddingLeft: 6}}></AntDesign>
-          <View style={{right: 20, display: 'flex', flexDirection: 'row'}}>
-            <AntDesign name='sharealt' style={{width: 40,color: 'black', fontSize: 25, marginRight: 10, paddingTop: 7, paddingBottom:7, paddingLeft: 6}}></AntDesign>
-            <AntDesign name='heart' style={{width: 40,height: 40,color: 'black', fontSize: 25, paddingTop: 8, paddingBottom:7, paddingLeft: 7}}></AntDesign>
-          </View>
-        </View>
+    <View style={{ flex: 1 }}>
+      <View style={{ width: '100%', height: 80, borderBottomColor: '#bbb', borderBottomWidth: 3, flexDirection: 'row' }}>
+        <Pressable onPress={() => navigation.goBack()} style={{ marginEnd: 'auto' }}>
+          <AntDesign name='left' style={{ width: 40, color: 'black', fontSize: 24, top: 32, paddingTop: 7, paddingBottom: 7, paddingLeft: 6, alignSelf: 'flex-start' }}></AntDesign>
+        </Pressable>
+        <Pressable style={{ marginStart: 'auto', marginEnd: 0 }}>
+          <AntDesign name='sharealt' style={{ alignSelf: 'flex-end', width: 40, top: 32, paddingTop: 7, paddingBottom: 7, paddingLeft: 6, color: 'black', fontSize: 24 }}></AntDesign>
+        </Pressable>
+        <Pressable style={{ marginStart: 8, marginEnd: 4 }}>
+          <EvilIcons name='heart' style={{ width: 40, top: 32, paddingTop: 7, paddingBottom: 7, paddingLeft: 6, color: 'black', fontSize: 30 }}></EvilIcons>
+        </Pressable>
       </View>
       <ScrollView>
         <View>
 
           {/* --------------slider-------------- */}
-          <View style={{position: 'relative', top: -5}}>
-            <SliderBox style={{height: 300}}
-            images={images}
-            // circleloop={true}
-            dotColor="white"
-            inactiveDotColor="black"
-            dotStyle={{height: 10, width: 10, borderRadius: 50 }}
-            imageLoadingColor="black"
-            autoplay={true}
-            autoplayInterval={3000}
-            paginationBoxVerticalPadding={10} />
+          <View style={{ position: 'relative', top: -5 }}>
+            <SliderBox style={{ height: 300 }}
+              images={images}
+              // circleloop={true}
+              dotColor="white"
+              inactiveDotColor="black"
+              dotStyle={{ height: 10, width: 10, borderRadius: 50 }}
+              imageLoadingColor="black"
+              autoplay={true}
+              autoplayInterval={3000}
+              paginationBoxVerticalPadding={10} />
 
-            
+
           </View>
-          
+
           {/* ---------------title------------- */}
-          <Text style={{margin: 20, fontSize: 30, fontWeight: '800'}}>
+          <Text style={{ margin: 20, fontSize: 30, fontWeight: '800' }}>
             Cozy Apartment with Amazing View - Ha Long city
           </Text>
 
           {/* -----------Review đầu trang-------------- */}
-          <Text style={{paddingLeft: 25}}>
-              <AntDesign name='star' style={{fontSize: 20, paddingRight: 20}}> {' '} 4.8/5 {'  -  '} </AntDesign>
-              <Text style={{fontSize: 20, textDecorationLine: 'underline', fontWeight: '800'}}>168 lượt đánh giá</Text>
+          <Text style={{ paddingLeft: 25 }}>
+            <AntDesign name='star' style={{ fontSize: 20, paddingRight: 20 }}> {' '} 4.8/5 {'  -  '} </AntDesign>
+            <Text style={{ fontSize: 20, textDecorationLine: 'underline', fontWeight: '800' }}>168 lượt đánh giá</Text>
           </Text>
 
           {/* -----------------Giới thiệu--------------- */}
-          <View style={{padding: 20, margin: 20,
+          <View style={{
+            padding: 20, margin: 20,
             borderTopColor: '#bbb', borderTopWidth: 1,
             borderBottomColor: '#bbb', borderBottomWidth: 1,
-            display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-            <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Image source={require('./assets/icon-bed.png')} style={{width: 30, height: 30, marginBottom: 5}} />
-              <Text style={{marginTop: 8}}>{'   '}Giường đôi</Text> 
+            display: 'flex', flexDirection: 'row', justifyContent: 'space-between'
+          }}>
+            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+              <Image source={require('./assets/icon-bed.png')} style={{ width: 30, height: 30, marginBottom: 5 }} />
+              <Text style={{ marginTop: 8 }}>{'   '}Giường đôi</Text>
             </View>
-            <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Image source={require('./assets/icon-people.png')} style={{width: 30, height: 30, marginBottom: 5}} />
-              <Text style={{marginTop: 8}}>{'   '}2 người</Text> 
+            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+              <Image source={require('./assets/icon-people.png')} style={{ width: 30, height: 30, marginBottom: 5 }} />
+              <Text style={{ marginTop: 8 }}>{'   '}2 người</Text>
             </View>
           </View>
 
           {/* ----------------Mô tả--------------- */}
-          <View style={{paddingLeft: 20, paddingRight: 20}}>
-              <Text style={{fontSize: 20, fontWeight: '800'}}>Mô tả</Text>
-              <Text style={{textAlign: 'justify',lineHeight: 23, marginTop: 10, fontSize:15}}>Căn hộ “May Citadines Marina Hạ Long” nằm trong tổ hợp căn hộ với khách sạn tiêu chuẩn 5 sao “May CITADINES MARINA HẠ Long”, tọa lạc tại tầng 28, sở hữu vị trí đắc địa với tầm nhìn hướng ra vịnh Hạ Long, hứa hẹn sẽ mang đến cho bạn những trải nghiệm tuyệt vời nhất. Trải nghiệm tuyệt vời của một căn hộ nghỉ dưỡng đẳng cấp cho người dùng với đầy đủ tiện nghi như: phòng tập thể dục, hồ bơi trong nhà và ngoài trời với các tiện ích tiêu chuẩn quốc tế.</Text>
+          <View style={{ paddingLeft: 20, paddingRight: 20 }}>
+            <Text style={{ fontSize: 20, fontWeight: '800' }}>Mô tả</Text>
+            <Text style={{ textAlign: 'justify', lineHeight: 23, marginTop: 10, fontSize: 15 }}>Căn hộ “May Citadines Marina Hạ Long” nằm trong tổ hợp căn hộ với khách sạn tiêu chuẩn 5 sao “May CITADINES MARINA HẠ Long”, tọa lạc tại tầng 28, sở hữu vị trí đắc địa với tầm nhìn hướng ra vịnh Hạ Long, hứa hẹn sẽ mang đến cho bạn những trải nghiệm tuyệt vời nhất. Trải nghiệm tuyệt vời của một căn hộ nghỉ dưỡng đẳng cấp cho người dùng với đầy đủ tiện nghi như: phòng tập thể dục, hồ bơi trong nhà và ngoài trời với các tiện ích tiêu chuẩn quốc tế.</Text>
           </View>
 
           {/* ----------------Tiện ích------------------- */}
-          <View style={{paddingLeft: 30, paddingRight: 30, paddingTop: 20}}>
-              <Text style={{fontSize: 20, fontWeight: '800', paddingBottom: 10}}>Tiện ích</Text>
-              <View style={{paddingLeft: 30, paddingRight: 30}}>
-                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
-                  paddingTop: 15}}>
-                  <Text style={{fontSize: 15}}>Hướng nhìn ra vườn</Text>
-                  <Image source={require('./assets/icon-sun.png')} style={{width: 30, height: 30, marginBottom: 5}} />
-                </View>
-
-                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
-                  paddingTop: 15, paddingBottom: 10}}>
-                  <Text style={{fontSize: 15}}>Wifi kết nối ổn định</Text>
-                  <AntDesign name='wifi' style={{fontSize: 25}}></AntDesign>
-                </View>
-
-                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
-                  paddingTop: 15, paddingBottom: 10}}>
-                  <Text style={{fontSize: 15}}>Máy lạnh riêng từng phòng</Text>
-                  <Image source={require('./assets/icon-aircon.png')} style={{width: 27, height: 25, marginBottom: 5}} />
-                </View>
-
-                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
-                  paddingTop: 15, paddingBottom: 10}}>
-                  <Text style={{fontSize: 15}}>Chỗ đậu xe rộng rãi</Text>
-                  <Image source={require('./assets/icon-parking.png')} style={{width: 27, height: 25, marginBottom: 5}} />
-                </View>
-
-                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
-                  paddingTop: 15, paddingBottom: 0}}>
-                  <Text style={{fontSize: 15}}>Thang máy tiện lợi</Text>
-                  <Image source={require('./assets/icon-elevator.png')} style={{width: 27, height: 25, marginBottom: 5}} />
-                </View>
+          <View style={{ paddingLeft: 30, paddingRight: 30, paddingTop: 20 }}>
+            <Text style={{ fontSize: 20, fontWeight: '800', paddingBottom: 10 }}>Tiện ích</Text>
+            <View style={{ paddingLeft: 30, paddingRight: 30 }}>
+              <View style={{
+                display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
+                paddingTop: 15
+              }}>
+                <Text style={{ fontSize: 15 }}>Hướng nhìn ra vườn</Text>
+                <Image source={require('./assets/icon-sun.png')} style={{ width: 30, height: 30, marginBottom: 5 }} />
               </View>
+
+              <View style={{
+                display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
+                paddingTop: 15, paddingBottom: 10
+              }}>
+                <Text style={{ fontSize: 15 }}>Wifi kết nối ổn định</Text>
+                <AntDesign name='wifi' style={{ fontSize: 25 }}></AntDesign>
+              </View>
+
+              <View style={{
+                display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
+                paddingTop: 15, paddingBottom: 10
+              }}>
+                <Text style={{ fontSize: 15 }}>Máy lạnh riêng từng phòng</Text>
+                <Image source={require('./assets/icon-aircon.png')} style={{ width: 27, height: 25, marginBottom: 5 }} />
+              </View>
+
+              <View style={{
+                display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
+                paddingTop: 15, paddingBottom: 10
+              }}>
+                <Text style={{ fontSize: 15 }}>Chỗ đậu xe rộng rãi</Text>
+                <Image source={require('./assets/icon-parking.png')} style={{ width: 27, height: 25, marginBottom: 5 }} />
+              </View>
+
+              <View style={{
+                display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
+                paddingTop: 15, paddingBottom: 0
+              }}>
+                <Text style={{ fontSize: 15 }}>Thang máy tiện lợi</Text>
+                <Image source={require('./assets/icon-elevator.png')} style={{ width: 27, height: 25, marginBottom: 5 }} />
+              </View>
+            </View>
           </View>
 
           {/* ---------------Review------------------ */}
-          <View style={{padding: 25}}>
-            <Text style={{paddingTop: 20, borderTopColor: '#bbb', borderTopWidth: 1, paddingBottom: 20}}>
-                <AntDesign name='star' style={{fontSize: 20, paddingRight: 20}}> {' '} 4.8/5 {'  -  '} </AntDesign>
-                <Text style={{fontSize: 20, textDecorationLine: 'underline', fontWeight: '800'}}>168 lượt đánh giá</Text>
+          <View style={{ padding: 25 }}>
+            <Text style={{ paddingTop: 20, borderTopColor: '#bbb', borderTopWidth: 1, paddingBottom: 20 }}>
+              <AntDesign name='star' style={{ fontSize: 20, paddingRight: 20 }}> {' '} 4.8/5 {'  -  '} </AntDesign>
+              <Text style={{ fontSize: 20, textDecorationLine: 'underline', fontWeight: '800' }}>168 lượt đánh giá</Text>
             </Text>
 
-            <ScrollView horizontal={true} style={{marginBottom: 20}}>
-              <View style={{ width: 225, height: 225, borderColor: '#000', borderWidth: 1,
-                            padding: 20, marginRight: 20, borderRadius: 20}}>
-                <View style={{display: 'flex', flexDirection: 'row', marginBottom: 10}}>
-                  <Image source={{uri: 'https://image.thanhnien.vn/460x587/Uploaded/2023/zxaijr/2022_12_10/saothailanbaifernbitrieutap13-5733.png'}} style={{width: 50, height: 50, borderRadius: 50}} />
-                  <View style={{paddingLeft: 20}}>
-                      <Text style={{fontWeight: '800', fontSize: 18}}>Lê Phương</Text>
-                      <Text style={{fontSize: 15}}>10 Oct 2022</Text>
+            <ScrollView horizontal={true} style={{ marginBottom: 20 }}>
+              <View style={{
+                width: 225, height: 225, borderColor: '#000', borderWidth: 1,
+                padding: 20, marginRight: 20, borderRadius: 20
+              }}>
+                <View style={{ display: 'flex', flexDirection: 'row', marginBottom: 10 }}>
+                  <Image source={{ uri: 'https://image.thanhnien.vn/460x587/Uploaded/2023/zxaijr/2022_12_10/saothailanbaifernbitrieutap13-5733.png' }} style={{ width: 50, height: 50, borderRadius: 50 }} />
+                  <View style={{ paddingLeft: 20 }}>
+                    <Text style={{ fontWeight: '800', fontSize: 18 }}>Lê Phương</Text>
+                    <Text style={{ fontSize: 15 }}>10 Oct 2022</Text>
                   </View>
                 </View>
 
-                <Text style={{textAlign: 'justify', lineHeight: 18, fontSize: 15}}>
-                Mình có khoảng thời gian rất thoải mái và thư giãn sau 3 ngày trải nghiệm tại khách sạn. Mọi thứ như một giấc mơ vậy khiến mình tiếc nuối vì kết thúc quá nhanh.
+                <Text style={{ textAlign: 'justify', lineHeight: 18, fontSize: 15 }}>
+                  Mình có khoảng thời gian rất thoải mái và thư giãn sau 3 ngày trải nghiệm tại khách sạn. Mọi thứ như một giấc mơ vậy khiến mình tiếc nuối vì kết thúc quá nhanh.
                 </Text>
               </View>
 
-              <View style={{ width: 225, height: 225, borderColor: '#000', borderWidth: 1,
-                            padding: 20, marginRight: 20, borderRadius: 20}}>
-                <View style={{display: 'flex', flexDirection: 'row', marginBottom: 10}}>
-                  <Image source={{uri: 'https://hiamdory.files.wordpress.com/2022/11/image-31.png?w=865'}} style={{width: 50, height: 50, borderRadius: 50}} />
-                  <View style={{paddingLeft: 20}}>
-                      <Text style={{fontWeight: '800', fontSize: 18}}>Trang</Text>
-                      <Text style={{fontSize: 15}}>07 Nov 2022</Text>
+              <View style={{
+                width: 225, height: 225, borderColor: '#000', borderWidth: 1,
+                padding: 20, marginRight: 20, borderRadius: 20
+              }}>
+                <View style={{ display: 'flex', flexDirection: 'row', marginBottom: 10 }}>
+                  <Image source={{ uri: 'https://hiamdory.files.wordpress.com/2022/11/image-31.png?w=865' }} style={{ width: 50, height: 50, borderRadius: 50 }} />
+                  <View style={{ paddingLeft: 20 }}>
+                    <Text style={{ fontWeight: '800', fontSize: 18 }}>Trang</Text>
+                    <Text style={{ fontSize: 15 }}>07 Nov 2022</Text>
                   </View>
                 </View>
 
-                <Text style={{textAlign: 'justify', lineHeight: 18, fontSize: 15}}>
-                Nhà rất đẹp, thiết kế siêu độc lạ và thích mắt. Toà citadines cũng là 1 toà nhà được bài trí thiết kế rất độc đáo nên mình rất ưng.
+                <Text style={{ textAlign: 'justify', lineHeight: 18, fontSize: 15 }}>
+                  Nhà rất đẹp, thiết kế siêu độc lạ và thích mắt. Toà citadines cũng là 1 toà nhà được bài trí thiết kế rất độc đáo nên mình rất ưng.
                 </Text>
               </View>
 
-              <View style={{ width: 225, height: 225, borderColor: '#000', borderWidth: 1,
-                            padding: 20, marginRight: 20, borderRadius: 20}}>
-                <View style={{display: 'flex', flexDirection: 'row', marginBottom: 10}}>
-                  <Image source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj0ZO3YYtsVeboTftmgFs5QqWG2BmxZezr5g&usqp=CAU'}} style={{width: 50, height: 50, borderRadius: 50}} />
-                  <View style={{paddingLeft: 20}}>
-                      <Text style={{fontWeight: '800', fontSize: 18}}>Huỳnh Khôi</Text>
-                      <Text style={{fontSize: 15}}>02 DEC 2022</Text>
+              <View style={{
+                width: 225, height: 225, borderColor: '#000', borderWidth: 1,
+                padding: 20, marginRight: 20, borderRadius: 20
+              }}>
+                <View style={{ display: 'flex', flexDirection: 'row', marginBottom: 10 }}>
+                  <Image source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj0ZO3YYtsVeboTftmgFs5QqWG2BmxZezr5g&usqp=CAU' }} style={{ width: 50, height: 50, borderRadius: 50 }} />
+                  <View style={{ paddingLeft: 20 }}>
+                    <Text style={{ fontWeight: '800', fontSize: 18 }}>Huỳnh Khôi</Text>
+                    <Text style={{ fontSize: 15 }}>02 DEC 2022</Text>
                   </View>
                 </View>
 
-                <Text style={{textAlign: 'justify', lineHeight: 18, fontSize: 15}}>
-                Mình có khoảng thời gian rất thoải mái và thư giãn sau 3 ngày trải nghiệm tại khách sạn. Mọi thứ như một giấc mơ vậy khiến mình tiếc nuối vì kết thúc quá nhanh.
+                <Text style={{ textAlign: 'justify', lineHeight: 18, fontSize: 15 }}>
+                  Mình có khoảng thời gian rất thoải mái và thư giãn sau 3 ngày trải nghiệm tại khách sạn. Mọi thứ như một giấc mơ vậy khiến mình tiếc nuối vì kết thúc quá nhanh.
                 </Text>
               </View>
 
-              <View style={{ width: 225, height: 225, borderColor: '#000', borderWidth: 1,
-                            padding: 20, marginRight: 20, borderRadius: 20}}>
-                <View style={{display: 'flex', flexDirection: 'row', marginBottom: 10}}>
-                  <Image source={{uri: 'https://thumbs.dreamstime.com/b/portrait-friendly-young-man-inside-trendy-handsome-guy-looks-to-camera-smiling-wishing-everyone-us-worry-enjoy-112348414.jpg'}} style={{width: 50, height: 50, borderRadius: 50}} />
-                  <View style={{paddingLeft: 20}}>
-                      <Text style={{fontWeight: '800', fontSize: 18}}>Mạnh Nguyễn</Text>
-                      <Text style={{fontSize: 15}}>27 DEC 2022</Text>
+              <View style={{
+                width: 225, height: 225, borderColor: '#000', borderWidth: 1,
+                padding: 20, marginRight: 20, borderRadius: 20
+              }}>
+                <View style={{ display: 'flex', flexDirection: 'row', marginBottom: 10 }}>
+                  <Image source={{ uri: 'https://thumbs.dreamstime.com/b/portrait-friendly-young-man-inside-trendy-handsome-guy-looks-to-camera-smiling-wishing-everyone-us-worry-enjoy-112348414.jpg' }} style={{ width: 50, height: 50, borderRadius: 50 }} />
+                  <View style={{ paddingLeft: 20 }}>
+                    <Text style={{ fontWeight: '800', fontSize: 18 }}>Mạnh Nguyễn</Text>
+                    <Text style={{ fontSize: 15 }}>27 DEC 2022</Text>
                   </View>
                 </View>
 
-                <Text style={{textAlign: 'justify', lineHeight: 18, fontSize: 15}}>
-                Chỗ ở tuyệt đẹp, view thoáng. Chủ căn hộ suport nhiệt tình. Có thời gian nghỉ dưỡng rất vui tại đây
+                <Text style={{ textAlign: 'justify', lineHeight: 18, fontSize: 15 }}>
+                  Chỗ ở tuyệt đẹp, view thoáng. Chủ căn hộ suport nhiệt tình. Có thời gian nghỉ dưỡng rất vui tại đây
                 </Text>
               </View>
             </ScrollView>
@@ -204,18 +225,18 @@ export default function DetailScreen({navigation}) {
           </View>
 
           {/* -------------------Vị trí + địa điểm lân cận---------------- */}
-          <View style={{padding: 20}}>
+          <View style={{ padding: 20 }}>
 
             {/* --------------vị trí------------------- */}
-            <View style={{ marginBottom: 20}}>
-              <Text style={{fontSize: 20, fontWeight: '800'}}>Vị trí</Text>
-              <View style={{paddingLeft: 50, paddingRight: 50, marginBottom: 20}}>
-                <Image source={{uri: 'https://www.google.com/maps/d/thumbnail?mid=1GY1GynFgJrnetohH91WuzJGvoFk&hl=en_US'}} style={{width: '100%', height: 200}} />
+            <View style={{ marginBottom: 20 }}>
+              <Text style={{ fontSize: 20, fontWeight: '800' }}>Vị trí</Text>
+              <View style={{ paddingLeft: 50, paddingRight: 50, marginBottom: 20 }}>
+                <Image source={{ uri: 'https://www.google.com/maps/d/thumbnail?mid=1GY1GynFgJrnetohH91WuzJGvoFk&hl=en_US' }} style={{ width: '100%', height: 200 }} />
               </View>
-              <Text style={{fontSize: 18, fontWeight: '700', marginBottom: 5}}>
-                <Image source={require('./assets/icon-location.png')} style={{width: 27, height: 25, marginBottom: 5}} />
+              <Text style={{ fontSize: 18, fontWeight: '700', marginBottom: 5 }}>
+                <Image source={require('./assets/icon-location.png')} style={{ width: 27, height: 25, marginBottom: 5 }} />
                 Thành phố Hạ Long, Quảng Ninh, Việt Nam</Text>
-              <Text style={{fontSize: 15}}>
+              <Text style={{ fontSize: 15 }}>
                 - 5 minutes walk from the beach {'\n'}
                 - Ha Long Bay - A natural wonder of the world: 5 minutes to visit {'\n'}
                 - Quang Ninh Museum: 25 minutes...
@@ -225,110 +246,117 @@ export default function DetailScreen({navigation}) {
 
             {/* ---------------Địa điểm lân cận------------- */}
             <View>
-                <Text style={{fontSize: 20, fontWeight: '700', textAlign: 'center'}}>Địa điểm lân cận</Text>
-                <View>
-                  {/* ----Giải trí---- */}
-                  <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
-                    paddingTop: 20, paddingBottom: 0}}>
-                    
-                    <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                      <Image source={require('./assets/icon-entertainment.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10}} />
-                      <Text style={{fontSize: 16, fontWeight: '700', lineHeight: 20}}>Khu vui chơi cho bé {'\n'}
-                        <Text style={{fontSize: 14, fontWeight: '500'}}>Giải trí</Text>
-                      </Text>
-                    </View>
-                    <Text style={{color: 'rgba(0, 0, 0, 0.7)'}}> 831 m</Text>
-                  </View>
+              <Text style={{ fontSize: 20, fontWeight: '700', textAlign: 'center' }}>Địa điểm lân cận</Text>
+              <View>
+                {/* ----Giải trí---- */}
+                <View style={{
+                  display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
+                  paddingTop: 20, paddingBottom: 0
+                }}>
 
-                  {/* ----phương tiện công cộng---- */}
-                  <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
-                    paddingTop: 20, paddingBottom: 0}}>
-                    
-                    <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                      <Image source={require('./assets/icon-bus.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10}} />
-                      <Text style={{fontSize: 16, fontWeight: '700', lineHeight: 20}}>Trạm bus{'\n'}
-                        <Text style={{fontSize: 14, fontWeight: '500'}}>Phương tiện công cộng</Text>
-                      </Text>
-                    </View>
-                    <Text style={{color: 'rgba(0, 0, 0, 0.7)'}}> 1.1 km</Text>
+                  <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <Image source={require('./assets/icon-entertainment.png')} style={{ width: 27, height: 25, marginBottom: 5, marginRight: 10 }} />
+                    <Text style={{ fontSize: 16, fontWeight: '700', lineHeight: 20 }}>Khu vui chơi cho bé {'\n'}
+                      <Text style={{ fontSize: 14, fontWeight: '500' }}>Giải trí</Text>
+                    </Text>
                   </View>
-
-                  {/* -----bệnh viện-------- */}
-                  <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
-                    paddingTop: 20, paddingBottom: 0}}>
-                    
-                    <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                      <Image source={require('./assets/icon-hospital.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10}} />
-                      <Text style={{fontSize: 16, fontWeight: '700', lineHeight: 20}}>Bệnh viện Hạ Long{'\n'}
-                        <Text style={{fontSize: 14, fontWeight: '500'}}>Sức khỏe</Text>
-                      </Text>
-                    </View>
-                    <Text style={{color: 'rgba(0, 0, 0, 0.7)'}}> 3.77 km</Text>
-                  </View>
-
-                  {/* ----chợ----- */}
-                  <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
-                    paddingTop: 20, paddingBottom: 0}}>
-                    
-                    <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                      <Image source={require('./assets/icon-store.png')} style={{width: 27, height: 25, marginBottom: 5, marginRight: 10}} />
-                      <Text style={{fontSize: 16, fontWeight: '700', lineHeight: 20}}>Chợ Hạ Long{'\n'}
-                        <Text style={{fontSize: 14, fontWeight: '500'}}>Mua sắm</Text>
-                      </Text>
-                    </View>
-                    <Text style={{color: 'rgba(0, 0, 0, 0.7)'}}> 6.1 km</Text>
-                  </View>
+                  <Text style={{ color: 'rgba(0, 0, 0, 0.7)' }}> 831 m</Text>
                 </View>
-            </View>   
-          </View>   
+
+                {/* ----phương tiện công cộng---- */}
+                <View style={{
+                  display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
+                  paddingTop: 20, paddingBottom: 0
+                }}>
+
+                  <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <Image source={require('./assets/icon-bus.png')} style={{ width: 27, height: 25, marginBottom: 5, marginRight: 10 }} />
+                    <Text style={{ fontSize: 16, fontWeight: '700', lineHeight: 20 }}>Trạm bus{'\n'}
+                      <Text style={{ fontSize: 14, fontWeight: '500' }}>Phương tiện công cộng</Text>
+                    </Text>
+                  </View>
+                  <Text style={{ color: 'rgba(0, 0, 0, 0.7)' }}> 1.1 km</Text>
+                </View>
+
+                {/* -----bệnh viện-------- */}
+                <View style={{
+                  display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
+                  paddingTop: 20, paddingBottom: 0
+                }}>
+
+                  <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <Image source={require('./assets/icon-hospital.png')} style={{ width: 27, height: 25, marginBottom: 5, marginRight: 10 }} />
+                    <Text style={{ fontSize: 16, fontWeight: '700', lineHeight: 20 }}>Bệnh viện Hạ Long{'\n'}
+                      <Text style={{ fontSize: 14, fontWeight: '500' }}>Sức khỏe</Text>
+                    </Text>
+                  </View>
+                  <Text style={{ color: 'rgba(0, 0, 0, 0.7)' }}> 3.77 km</Text>
+                </View>
+
+                {/* ----chợ----- */}
+                <View style={{
+                  display: 'flex', flexDirection: 'row', justifyContent: 'space-between',
+                  paddingTop: 20, paddingBottom: 0
+                }}>
+
+                  <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <Image source={require('./assets/icon-store.png')} style={{ width: 27, height: 25, marginBottom: 5, marginRight: 10 }} />
+                    <Text style={{ fontSize: 16, fontWeight: '700', lineHeight: 20 }}>Chợ Hạ Long{'\n'}
+                      <Text style={{ fontSize: 14, fontWeight: '500' }}>Mua sắm</Text>
+                    </Text>
+                  </View>
+                  <Text style={{ color: 'rgba(0, 0, 0, 0.7)' }}> 6.1 km</Text>
+                </View>
+              </View>
+            </View>
+          </View>
 
         </View>
       </ScrollView>
-          <View style={{ width: '100%', paddingLeft: 20, paddingRight: 20, borderTopColor: '#bbb', borderTopWidth: 3}}>
-            <View style={{height: 160, display: 'flex', flexDirection: 'row' ,justifyContent: 'space-between', alignItems: 'center'}}>
-              <Text style={{fontSize: 20}}>Giá phòng / đêm / từ {'\n'}
-                <Text style= {{color: '#a88e8a',fontSize: 25, fontWeight: '700'}}>VND 2.190.000 {'\n'}</Text>
-                
-                <View style={{marginTop:25}}></View>
-                <Text style={{fontSize: 30}}></Text>
-                <View style={{marginTop:14}}></View>
-                <TextInputField 
-                keyboardType ='date-pad'
-                defaultValue =  {stayDate}
-                onChange={(date)=>{
+      <View style={{ paddingStart: 4, paddingEnd: 4, borderTopColor: '#bbb', borderTopWidth: 3 }}>
+        <View style={{ height: '27%', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <Text style={{ fontSize: 20, alignSelf: 'flex-start' }}>Giá phòng / đêm / từ
+            <Text style={{ color: '#a88e8a', fontSize: 25, fontWeight: '700', alignSelf: 'flex-end' }}> 2.190.000 VND</Text>
+          </Text>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ marginStart: 0, marginEnd: 'auto', alignSelf: 'flex-start', flex: 2 }}>
+              <TextInputField
+                keyboardType='date-pad'
+                defaultValue={stayDate}
+                onChange={(date) => {
                   setStayDate(date)
-                }}
-                /> {'\n'}
-                
-                <View style={{marginTop:25}}></View>
-                <Text style={{fontSize: 30}}></Text>
-                <View style={{marginTop:14}}></View>
-                <TextInputField
-                keyboardType ='date-pad'
-                defaultValue = {returnDate}
-                onChange={(date)=>{
+                  console.log(date)
+                }} />
+            </View>
+            <View style={{ marginStart: 'auto', marginEnd: 'auto', alignSelf: 'center', flex: 1 }}>
+              <Text style={{ fontSize: 20, alignSelf: 'center' }}> đến </Text>
+            </View>
+            <View style={{ marginStart: 'auto', marginEnd: 0, alignSelf: 'flex-end', flex: 2 }}>
+              <TextInputField
+                keyboardType='date-pad'
+                defaultValue={returnDate}
+                onChange={(date) => {
                   setReturnDate(date)
-                }}
-                />
-              </Text>
-              
-              <View>
-                <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                  <Text style={{textDecorationLine: 'underline', marginBottom: 20, fontSize: 20}}>Chọn loại phòng</Text>
-                  <Image source={require('./assets/icon-up.png')} style={{width: 20, height: 20, marginBottom: 15, marginLeft: 5}} />
-                </View>
-                <View style={{height: 70, width: 200, backgroundColor: '#a88e8a', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8}}>
-                  <Pressable onPress={bookRoom}>
-                    <Text style={{color: '#fff', fontSize: 20}}>Chọn phòng</Text>
-                  </Pressable>
-                </View>
-              </View>
-
+                  console.log(date)
+                }} />
             </View>
           </View>
-      
+          <View>
+            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{ textDecorationLine: 'underline', marginBottom: 20, fontSize: 20 }}>Chọn loại phòng</Text>
+              <Image source={require('./assets/icon-up.png')} style={{ width: 20, height: 20, marginBottom: 15, marginLeft: 5 }} />
+            </View>
+            <View style={{flexDirection: 'row', alignSelf: 'center', alignItems:'center'}}>
+            <View style={{ height: 50, backgroundColor: '#a88e8a', flex: 1, flexDirection:'row', alignItems:'center', alignSelf:'center', marginStart:20, marginEnd:20, borderRadius:100 }}>
+              <Pressable onPress={bookRoom} style={{flexDirection:'column', flex:1, alignItems:'center'}}>
+                <Text style={{ color: '#fff', fontSize: 20}}>Chọn phòng</Text>
+              </Pressable>
+            </View>
+            </View>
+          </View>
+        </View>
+      </View>
     </View>
-   
   )
 }
 

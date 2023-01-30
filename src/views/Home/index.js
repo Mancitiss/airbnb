@@ -136,7 +136,7 @@ const Home = (props) => {
             </View>
             <View style={styles.footer}>
                 <View style={{alignItems: 'center', marginLeft: '5%'}}>
-                    <Pressable style={{ alignItems: 'center' }} onPress={() => homeNavigation.navigate("Home") }>
+                    <Pressable style={{ alignItems: 'center' }} onPress={() => navigation.navigate("Home", {place: props.route.params.place, list: props.route.params.list, data: props.route.params.data} ) }>
                         <Ionicons name="home-outline" size={16} color="black" />
                         <Text>Khám phá</Text>
                     </Pressable>

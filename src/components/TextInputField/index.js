@@ -27,7 +27,7 @@ const TextInputField = (props) => {
         
         <Buttons 
           variant = 'icon' 
-          onPress={()=>{setShowDateModal(true)}}
+          onPress={()=>{setShowDateModal(!ShowDateModal)}}
           title={<FontAwesome5
             color='#B3B3B3'
             size={32}
@@ -38,26 +38,27 @@ const TextInputField = (props) => {
         </View>
         </View>
   
-      {
-        ShowDateModal&&
-        <RNDateTimePicker
-        mode="date"
-        style={{
-        shadowColor: '#fff',
-        shadowRadius: 0,
-        shadowOpacity: 1,
-        shadowOffset: { height: 0, width: 0 },
-      }}
-      value={props.defaultValue?props.defaultValue:new Date()}
-      onChange={(event, date) => {
-        if(event.type=='dismissed'){setShowDateModal(false)}
-        if(event.type=='set'){
-          props.onChange(date)
-          setShowDateModal(false)
+        {
+          ShowDateModal &&
+          <RNDateTimePicker
+            mode="date"
+            style={{
+              shadowColor: '#fff',
+              shadowRadius: 0,
+              shadowOpacity: 1,
+              shadowOffset: { height: 0, width: 0 },
+              width: '100%'
+            }}
+            value={props.defaultValue ? props.defaultValue : new Date()}
+            onChange={(event, date) => {
+              if (event.type == 'dismissed') { setShowDateModal(false) }
+              if (event.type == 'set') {
+                props.onChange(date)
+                setShowDateModal(false)
+              }
+            }}
+          />
         }
-      }}
-       />
-      }
       </>
     )
   }else{
