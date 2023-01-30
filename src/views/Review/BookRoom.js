@@ -3,14 +3,16 @@ import TextInputField from '../../../src/views/components/TextInputField/index.j
 import { StyleSheet, Text, View, Image, ScrollView,TouchableOpacity, Pressable, Button } from 'react-native';
 import react, {useState} from 'react';
 
-const BookRoom = () => {
+const BookRoom = ({navigation}) => {
     const [stayDate, setStayDate] = useState()
     const [returnDate, setReturnDate] = useState()
     return (
 
         <View style={styles.container}>
             <View style={styles.fixed_heading}>
-                <Image style={styles.back_button} source={require('../../../assets/icons8-chevron-left-20.png')} />
+                <Pressable onPress={() => { navigation.goBack() }}>
+                    <Image style={styles.back_button} source={require('../../../assets/icons8-chevron-left-20.png')} />
+                </Pressable>
                 <Text style={styles.heading}>Yêu cầu đặt phòng</Text>
             </View>
             <ScrollView style={{
@@ -53,9 +55,9 @@ const BookRoom = () => {
                                 </Text>
                                 <TextInputField
                                     keyboardType='date-pad'
-                                    defaultValue={stayDate}
+                                    defaultValue={returnDate}
                                     onChange={(date) => {
-                                        setStayDate(date)
+                                        setReturnDate(date)
                                     }}
                                     placeholder='Ngày trả phòng'
                                 />
@@ -344,7 +346,7 @@ const styles = StyleSheet.create({
         marginBottom: '5%'
     },
     small_section:{
-        flex: 2,
+        flex: 1,
         paddingBottom: '5%',
     },
     small_heading:{

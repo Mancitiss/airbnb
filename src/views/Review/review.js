@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Pressable } from 'react-native';
 import react from 'react';
 
 const ReviewPage = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.fixed_heading}>
-                <Image style={styles.back_button} source={require('../../../assets/icons8-chevron-left-20.png')} />
+                <Pressable onPress={() => navigation.goBack()}>
+                    <Image style={styles.back_button} source={require('../../../assets/icons8-chevron-left-20.png')} />
+                </Pressable>
                 <Text style={styles.heading}>ĐÁNH GIÁ</Text>
             </View>
 
