@@ -1,50 +1,204 @@
-import Icon from 'react-native-vector-icons/FontAwesome'
-import React from 'react';
-import { View, Text, StyleSheet,TouchableOpacity, Button, Image, ScrollView } from 'react-native';
-import { Pressable } from 'react-native';
-import { EvilIcons } from '@expo/vector-icons'; 
-import { Ionicons } from '@expo/vector-icons';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, Pressable } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown'
+import { EvilIcons, Ionicons, FontAwesome } from '@expo/vector-icons'; 
 
-let homeNavigation;
+export const MODE = {
+    HOME: 'home',
+    FAVORITE: 'favorite',
+}
 
-const organize = (list, data, filter, sort) => {
-    return list.sort((a, b) => {
-        if (sort === 'Phổ biến nhất') {
-            return 0
-        }
-        else if (sort === 'Giá thấp nhất') {
-            return data.hotel[a.key-1].price_value - data.hotel[b.key-1].price_value
-        }
-        else if (sort === 'Giá cao nhất') {
-            return data.hotel[b.key-1].price_value - data.hotel[a.key-1].price_value
-        }
-        else if (sort === 'Đánh giá cao nhất') {
-            return data.hotel[b.key-1].rating - data.hotel[a.key-1].rating
-        }
-        else if (sort === 'Đánh giá thấp nhất') {
-            return data.hotel[a.key-1].rating - data.hotel[b.key-1].rating
-        }
-        else if (sort === 'Địa điểm gần nhất') {
-            return data.hotel[a.key-1].distance - data.hotel[b.key-1].distance
-        }
-    }).filter((item) => {
-        if (filter === 'Tất cả') {
-            return true
-        }
-        else {
-            return data.hotel[item.key-1].type === filter
-        }
-    })
+//create your forceUpdate hook
+function useForceUpdate(){
+    const [value, setValue] = useState(0); // integer state
+    return () => setValue(value => value + 1); // update state to force render
+    // A function that increment 👆🏻 the previous state like here 
+    // is better than directly setting `setValue(value + 1)`
+}
+
+const isFavorite = (key) => {
+    let list = getFavoriteList()
+    return list.find((item) => item.key === key)
+}
+
+const Post = ({id, data, navigation}) => {
+    const hotel = data.hotel.find((item) => item.key === id)
+
+    // call your hook here
+    const forceUpdate = useForceUpdate();
+
+    return (
+        <View style={styles.section_img}>
+            <Pressable onPress={() => navigation.navigate("DetailScreen") }>
+                <Image style={{
+                    width: '100%',
+                    height: 200,
+                    borderRadius: 20,
+                    marginBottom: '10%'
+                }} source={hotel.image} />
+                <Pressable style={{
+                    zIndex: 10,
+                    position: 'absolute',
+                    margin: '2%',
+                    // make it stick to the top right corner
+                    top: 0,
+                    right: 0,
+                    
+                }} 
+                onPress={() => {
+                    if (isFavorite(hotel.key)) {
+                        removeFavorite(hotel)
+                        forceUpdate()
+                    }
+                    else {
+                        insertFavorite(hotel)
+                        forceUpdate()
+                    }
+                }}>
+                    {
+                        isFavorite(hotel.key) ?
+                            <Ionicons
+                                name="ios-heart"
+                                size={50}
+                                color="pink"
+                            /> : <Ionicons name="ios-heart-outline"
+                                size={50}
+                                color="pink" 
+                            />
+                    }
+                </Pressable>
+
+                {/* <Image style={{
+                    position: 'absolute',
+                    right: '2%',
+                    margin: '2%'
+                }} source={require('../../../assets/icons8-heart-24.png')} /> */}
+
+                <Text style={{
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    letterSpacing: 0.5
+                }}>{hotel.name}</Text>
+                <View style={{
+                    flexDirection: 'row',
+                    width: '100%',
+                    marginTop: '5%'
+                }}>
+                    <Text style={{
+                        width: '85%',
+                        fontSize: 16
+                    }}>VND {hotel.price}</Text>
+                    <View style={{
+                        flexDirection: 'row',
+                    }}>
+                        <FontAwesome name="star" size={16} color="pink" />
+                        <Text>{hotel.rating}</Text>
+                    </View>
+                </View>
+            </Pressable>
+        </View>
+    )
+}
+
+const getFavoriteList = () => {
+    if (!global.favoriteList) {
+        global.favoriteList = []
+    }
+    return global.favoriteList
+}
+
+const insertFavorite = (hotel) => {
+    let list = getFavoriteList()
+    if (!list.find((item) => item.key === hotel.key)) {
+        list.push(hotel)
+    }
+}
+
+const removeFavorite = (hotel) => {
+    let list = getFavoriteList()
+    let index = list.findIndex((item) => item.key === hotel.key)
+    if (index !== -1) {
+        list.splice(index, 1)
+    }
+}
+
+const organize = (list, data, filter, sort, mode=MODE.HOME, navigation) => {
+    if (mode === MODE.HOME) {
+        return list.sort((a, b) => {
+            if (sort === 'Phổ biến nhất') {
+                return 0
+            }
+            else if (sort === 'Giá thấp nhất') {
+                return a.price_value - b.price_value
+            }
+            else if (sort === 'Giá cao nhất') {
+                return b.price_value - a.price_value
+            }
+            else if (sort === 'Đánh giá cao nhất') {
+                return b.rating - a.rating
+            }
+            else if (sort === 'Đánh giá thấp nhất') {
+                return a.rating - b.rating
+            }
+            else if (sort === 'Địa điểm gần nhất') {
+                return a.distance - b.distance
+            }
+        }).filter((item) => {
+            if (filter === 'Tất cả') {
+                return true
+            }
+            else {
+                return item.type === filter
+            }
+        }).map(
+            (item) => <Post id={item.key} data={data} navigation={navigation} key={item.key}/>
+        )
+    }
+    else if (mode === MODE.FAVORITE) {
+        // get a copy of favorite list to avoid changing the original list
+        let list = getFavoriteList().slice()
+        return list.sort((a, b) => 
+        {
+            if (sort === 'Phổ biến nhất') {
+                return 0
+            }
+            else if (sort === 'Giá thấp nhất') {
+                return a.price_value - b.price_value
+            }
+            else if (sort === 'Giá cao nhất') {
+                return b.price_value - a.price_value
+            }
+            else if (sort === 'Đánh giá cao nhất') {
+                return b.rating - a.rating
+            }
+            else if (sort === 'Đánh giá thấp nhất') {
+                return a.rating - b.rating
+            }
+            else if (sort === 'Địa điểm gần nhất') {
+                return a.distance - b.distance
+            }
+        })
+        .filter((item) => {
+            if (filter === 'Tất cả') {
+                return true
+            }
+            else {
+                return item.type === filter
+            }
+        })
+        .map(
+            (item) => <Post id={item.key} data={data} navigation={navigation} key={item.key}/>
+        )
+    }
 }
 
 const Home = (props) => {
     const navigation = props.navigation
+    const [list, data, mode] = [props.route.params.list, props.route.params.data, props.route.params.mode]
     const [filter, setFilter] = useState('Tất cả')
     const [sort, setSort] = useState('Phổ biến nhất')
-    const displayList = organize(props.route.params.list, props.route.params.data, filter, sort)
-    homeNavigation = navigation;
+    const [modeState, setModeState] = useState(mode)
+    const displayList = organize(list, data, filter, sort, modeState, navigation)
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -136,14 +290,24 @@ const Home = (props) => {
             </View>
             <View style={styles.footer}>
                 <View style={{alignItems: 'center', marginLeft: '5%'}}>
-                    <Pressable style={{ alignItems: 'center' }} onPress={() => navigation.navigate("Home", {place: props.route.params.place, list: props.route.params.list, data: props.route.params.data} ) }>
-                        <Ionicons name="home-outline" size={16} color="black" />
+                    <Pressable style={{ alignItems: 'center' }} onPress={() => {
+                        setModeState(MODE.HOME)
+                    }}>
+                        {
+                            modeState === MODE.HOME ? <Ionicons name="ios-home" size={16} color="red" /> : <Ionicons name="ios-home-outline" size={16} color="black" />
+                        }
                         <Text>Khám phá</Text>
                     </Pressable>
                 </View>
                 <View style={{ alignItems: 'center' }}>
-                    <EvilIcons name="heart" size={25} color="black" />
-                    <Text style={{ color: '#73777B' }}>Yêu thích</Text>
+                    <Pressable style={{ alignItems: 'center' }} onPress={() => {
+                        setModeState(MODE.FAVORITE)
+                    }}>
+                        {
+                            modeState === MODE.FAVORITE ? <Ionicons name="ios-heart" size={16} color="red" /> : <Ionicons name="ios-heart-outline" size={16} color="black" />
+                        }
+                        <Text style={{ color: '#73777B' }}>Yêu thích</Text>
+                    </Pressable>
                 </View>
                 <View style={{ alignItems: 'center' }}>
                     <Pressable style={{ alignItems: 'center' }} onPress={() => navigation.navigate('Search')}>
@@ -165,7 +329,8 @@ export default Home;
 const styles = StyleSheet.create({
     container: {
         height: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
+        flex: 1,
     },
     
     header:{

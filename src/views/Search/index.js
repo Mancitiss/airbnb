@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { validateNumber } from '../../utils/input/number';
 import { Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; 
-let searchNavigation;
+import { MODE } from '../Home';
 const data = {
   "hotel":[
       {
           key: 1,
-          name:"Terracotta Hotel & Resort (KS)",
+          name:"Terracotta Hotel & Resort (KS) AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
           price:"1.300.000",
           price_value: 1300000,
           rating:"4.8",
@@ -31,53 +31,13 @@ const data = {
   ]
 }
 
-const openDetail = () => {
-  searchNavigation.navigate("DetailScreen", {});
-}
-
-const components = () => {
+const getHotels = () => {
   let list = []
   for (const hotel of data.hotel) {
       // random chance to push to the list is 50%
       if (Math.random() < 0.5) {
           list.push(
-              <View style={styles.section_img} key={hotel.key}>
-                  <Pressable onPress={openDetail}>
-                      <Image style={{
-                          width: '100%',
-                          height: 400,
-                          borderRadius: 20,
-                          marginBottom: '10%'
-                      }} source={hotel.image} />
-                      <Image style={{
-                          position: 'absolute',
-                          right: '2%',
-                          margin: '2%'
-                      }} source={require('../../../assets/icons8-heart-24.png')} />
-
-                      <Text style={{
-                          fontSize: 20,
-                          fontWeight: 'bold',
-                          letterSpacing: 0.5
-                      }}>{hotel.name}</Text>
-                      <View style={{
-                          flexDirection: 'row',
-                          width: '100%',
-                          marginTop: '5%'
-                      }}>
-                          <Text style={{
-                              width: '85%',
-                              fontSize: 16
-                          }}>VND {hotel.price}</Text>
-                          <View style={{
-                              flexDirection: 'row',
-                          }}>
-                              <FontAwesome name="star" size={16} color="pink" />
-                              <Text>{hotel.rating}</Text>
-                          </View>
-                      </View>
-                  </Pressable>
-              </View>
+              hotel
           )
       }
   }
@@ -85,7 +45,6 @@ const components = () => {
 }
 
 const Search = ({navigation})=>{
-    searchNavigation = navigation;
     let place = ""
     let childQuantity = 0
     let adultQuantity = 0
@@ -98,8 +57,8 @@ const Search = ({navigation})=>{
       console.log(count)
       console.log(stayDate)
       console.log(returnDate)
-      let list = components()
-      navigation.navigate('Home', {place: place, list: list, data: data})
+      let list = getHotels()
+      navigation.navigate('Home', {place: place, list: list, data: data, mode: MODE.HOME})
     }
     const [validChild,setValidChild] = useState(true)
     const [validAdult,setValidAdult] = useState(true)
