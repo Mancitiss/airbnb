@@ -1,11 +1,10 @@
-import {Text, Image, View,StyleSheet,ScrollView } from 'react-native';
+import {Text, View, StyleSheet, ScrollView, BackHandler } from 'react-native';
+import { useState, useEffect } from 'react';
 import Buttons from '../../components/Buttons';
 import TextInputField from '../../components/TextInputField';
-import { useState } from 'react';
 import { validateNumber } from '../../utils/input/number';
-import { Pressable } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; 
 import { MODE } from '../Home';
+
 const data = {
   "hotel":[
       {
@@ -53,10 +52,14 @@ export const search = (navigation, place='', childQuantity=0, adultQuantity=0, c
   console.log(stayDate)
   console.log(returnDate)
   let list = getHotels()
-  navigation.push('Home', {place: place, list: list, data: data, mode: MODE.HOME})
+  navigation.navigate('Home', {place: place, list: list, data: data, mode: MODE.HOME})
 }
 
 const Search = ({navigation})=>{
+    useEffect(() => {
+      const backHandler = BackHandler.addEventListener('hardwareBackPress', () => true)
+      return () => backHandler.remove()
+    }, [])
     let place = ""
     let childQuantity = 0
     let adultQuantity = 0

@@ -27,13 +27,12 @@ const Profile = ({navigation}) =>{
                 <Text style={styles.btn_text}>Trung tâm hỗ trợ</Text>
             </Pressable>
 
-            {/* cái console đâu, tắt app mở lại */}
             <TouchableOpacity style={
                 {
                     justifyContent: 'center',
                     alignItems: 'center',
                 }
-            } onPress={() => {console.log("alo"); navigation.push('Login')}}>
+            } onPress={() => {console.log("alo"); navigation.navigate('Login')}}>
                 <View style={styles.btn_logout}>
                     <Text style={{
                         color: "#fff",

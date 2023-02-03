@@ -2,10 +2,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import TextInputField from '../../components/TextInputField';
 import Buttons from '../../components/Buttons';
 import { FontAwesome } from '@expo/vector-icons';
-import { UNSTABLE_usePreventRemove as usePreventRemove } from '@react-navigation/native';
 
 const LoginScreen = ({navigation})=>{
-    usePreventRemove(true, (data) => {});
+    
     const login = ()=>{
       console.log(global.username, global.password);
       if (global.username && global.password){
@@ -14,7 +13,7 @@ const LoginScreen = ({navigation})=>{
         // to check the username and password yet
         const random = Math.random() <= 1;
         if(random){
-          navigation.push('Welcome');
+          navigation.navigate('Welcome');
         }
         else{
           alert('sai tài khoản hoặc mật khẩu');
