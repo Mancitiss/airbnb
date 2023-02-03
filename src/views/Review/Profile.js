@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet, View, Text, Button, Pressable, TouchableOpacity } from 'react-native';
 
 
-const Profile = () =>{
+const Profile = ({navigation}) =>{
 
     return (
         <View style={styles.container}>
@@ -12,28 +12,27 @@ const Profile = () =>{
                 <Text style={styles.avatar_name}>Hiền Trần</Text>
             </View>
 
-            <Pressable style={styles.btn_key}>
+            <Pressable style={styles.btn_key} onPress={()=>{console.log("ckct")}}>
                 <Image style={styles.btn_icon} source={require('../../../assets/icons8-key-security-50.png')} />
                 <Text style={styles.btn_text}>Chìa khóa của tôi</Text>
             </Pressable>
 
-            <Pressable style={styles.btn_key}>
+            <Pressable style={styles.btn_key} onPress={()=>{console.log("cd")}}>
                 <Image style={styles.btn_icon} source={require('../../../assets/icons8-settings-50.png')} />
                 <Text style={styles.btn_text}>Cài đặt</Text>
             </Pressable>
 
-            <Pressable style={styles.btn_key}>
+            <Pressable style={styles.btn_key} onPress={()=>{console.log("ttht")}}>
                 <Image style={styles.btn_icon} source={require('../../../assets/icons8-ringer-volume-50.png')} />
                 <Text style={styles.btn_text}>Trung tâm hỗ trợ</Text>
             </Pressable>
-
 
             <TouchableOpacity style={
                 {
                     justifyContent: 'center',
                     alignItems: 'center',
                 }
-            }>
+            } onPress={() => {console.log("alo"); navigation.navigate('Login')}}>
                 <View style={styles.btn_logout}>
                     <Text style={{
                         color: "#fff",

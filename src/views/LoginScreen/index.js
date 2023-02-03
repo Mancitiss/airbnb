@@ -4,13 +4,14 @@ import Buttons from '../../components/Buttons';
 import { FontAwesome } from '@expo/vector-icons';
 
 const LoginScreen = ({navigation})=>{
+    
     const login = ()=>{
       console.log(global.username, global.password);
       if (global.username && global.password){
         // random true or false
         // this is just a demo as we don't have a server 
         // to check the username and password yet
-        const random = Math.random() <= 0.8;
+        const random = Math.random() <= 1;
         if(random){
           navigation.navigate('Welcome');
         }
