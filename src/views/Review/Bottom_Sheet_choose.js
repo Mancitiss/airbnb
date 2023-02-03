@@ -75,15 +75,8 @@ const Bottom_Sheet_choose = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <Text
-          style={{
-            fontSize: 20,
-            marginBottom: 20,
-            textAlign: 'center',
-          }}>
-          Example of Bottom Sheet in React Native
-        </Text>
+      {/* <View style={styles.container}> */}
+        
         <Button
           onPress={toggleBottomNavigationView}
           title="Chi tiết mô tả"
@@ -285,7 +278,7 @@ const Bottom_Sheet_choose = ({navigation}) => {
             </View>
           </View>
         </BottomSheet>
-      </View>
+      {/* </View> */}
     </SafeAreaView>
   );
 };
@@ -293,13 +286,13 @@ const Bottom_Sheet_choose = ({navigation}) => {
 export default Bottom_Sheet_choose;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#E0F7FA',
-  },
+  // container: {
+  //   flex: 1,
+  //   margin: 2,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   backgroundColor: '#E0F7FA',
+  // },
   bottomNavigationView: {
     backgroundColor: '#fff',
     width: '100%',
