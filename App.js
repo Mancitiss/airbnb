@@ -6,6 +6,9 @@ import DetailScreen from './src/views/DetailScreen';
 import Home from './src/views/Home';
 import ReviewPage from './src/views/Review/review.js';
 import BookRoom from './src/views/Review/BookRoom.js';
+import Profile from './src/views/Review/Profile.js';
+import ChooseRoom from './src/views/Review/Bottom_Sheet_choose.js';
+import MoreDetail from './src/views/Review/Bottom_Sheet_room.js';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useRef, useState, Component, Fragment} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -30,6 +33,9 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Reviews" component={ReviewPage} />
         <Stack.Screen name="BookRoom" component={BookRoom} />
+        <Stack.Screen name="ChooseRoom" component={ChooseRoom} />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="MoreDetail" component={MoreDetail} />
       </Stack.Navigator>
     </NavigationContainer> 
   );

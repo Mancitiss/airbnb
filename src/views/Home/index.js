@@ -316,8 +316,10 @@ const Home = (props) => {
                     </Pressable>
                 </View>
                 <View style={{ alignItems: 'center', marginRight: '5%' }}>
+                <Pressable style={{ alignItems: 'center' }} onPress={() => navigation.navigate('Profile')}>
                     <EvilIcons name="user" size={25} color="black" />
                     <Text style={{ color: '#73777B' }}>Hồ sơ</Text>
+                </Pressable>
                 </View>
             </View>
         </View>

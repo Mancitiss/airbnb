@@ -3,13 +3,15 @@ import { SafeAreaView, StyleSheet, View, Text, Button, TouchableOpacity } from '
 import { BottomSheet } from 'react-native-btr';
 
 
-const Bottom_Sheet_choose = () => {
+const Bottom_Sheet_choose = ({navigation}) => {
+  let bookRoom = () => {
+    navigation.navigate("BookRoom");
+  }
   const [visible, setVisible] = useState(false);
 
   const toggleBottomNavigationView = () => {
     setVisible(!visible);
   };
-
   
 //tăng và giảm số lượng phòng
   const [count1, setCount1] = useState(0);
@@ -271,7 +273,7 @@ const Bottom_Sheet_choose = () => {
                   borderRadius: 10,
                   backgroundColor: '#dcbdb8',
                 
-                }} onPress={toggleBottomNavigationView} >
+                }} onPress={bookRoom} >
                   <Text style={{
                     textAlign: 'center',
                     justifyContent: 'center',

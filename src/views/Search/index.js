@@ -10,7 +10,7 @@ const data = {
   "hotel":[
       {
           key: 1,
-          name:"Terracotta Hotel & Resort (KS) AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          name:"Terracotta Hotel & Resort (KS)",
           price:"1.300.000",
           price_value: 1300000,
           rating:"4.8",
@@ -35,7 +35,7 @@ const getHotels = () => {
   let list = []
   for (const hotel of data.hotel) {
       // random chance to push to the list is 50%
-      if (Math.random() < 0.5) {
+      if (Math.random() < 1) {
           list.push(
               hotel
           )
@@ -44,22 +44,23 @@ const getHotels = () => {
   return list
 }
 
+export const search = (navigation, place='', childQuantity=0, adultQuantity=0, count=0, stayDate=Date(), returnDate=Date())=>{
+  // navigate to detail
+  console.log(place)
+  console.log(childQuantity)
+  console.log(adultQuantity)
+  console.log(count)
+  console.log(stayDate)
+  console.log(returnDate)
+  let list = getHotels()
+  navigation.push('Home', {place: place, list: list, data: data, mode: MODE.HOME})
+}
+
 const Search = ({navigation})=>{
     let place = ""
     let childQuantity = 0
     let adultQuantity = 0
     let count = 0
-    const search=()=>{
-      // navigate to detail
-      console.log(place)
-      console.log(childQuantity)
-      console.log(adultQuantity)
-      console.log(count)
-      console.log(stayDate)
-      console.log(returnDate)
-      let list = getHotels()
-      navigation.navigate('Home', {place: place, list: list, data: data, mode: MODE.HOME})
-    }
     const [validChild,setValidChild] = useState(true)
     const [validAdult,setValidAdult] = useState(true)
     const [validCount, setValidCount] = useState(true)
@@ -137,7 +138,7 @@ const Search = ({navigation})=>{
       />
 
       <View style={{marginTop:40}}></View>
-      <Buttons title = 'Tìm kiếm' onPress={search}></Buttons>
+      <Buttons title = 'Tìm kiếm' onPress={() => search(navigation, place, childQuantity, adultQuantity, count, stayDate, returnDate)}></Buttons>
     </View> 
     </ScrollView>
     )
