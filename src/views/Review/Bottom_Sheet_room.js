@@ -1,74 +1,67 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View, Text, Button } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text, Button, Pressable } from 'react-native';
 import { BottomSheet } from 'react-native-btr';
 
 
-const Bottom_Sheet_room = () => {
-  const [visible, setVisible] = useState(false);
-
-  const toggleBottomNavigationView = () => {
-    setVisible(!visible);
-  };
+const Bottom_Sheet_room = ({ navigation }) => {
+  let bookRoom = () => {
+    navigation.navigate("BookRoom");
+  }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <Text
-          style={{
-            fontSize: 20,
-            marginBottom: 20,
-            textAlign: 'center',
-          }}>
-          Example of Bottom Sheet in React Native
-        </Text>
-        <Button
-          onPress={toggleBottomNavigationView}
-          title="Chi tiết mô tả"
-        />
-        <BottomSheet
-          visible={visible}
-          onBackButtonPress={toggleBottomNavigationView}
-          //nhấn back trở về 
-          onBackdropPress={toggleBottomNavigationView}
-          //nhấn bên ngoài sheet để trở về
-        >
-          {/*Bottom Sheet----bên trong*/}
-          <View style={styles.bottomNavigationView}>
-            <View style={{
-                flex: 1,
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-              }}>
+    <View style={styles.bottomNavigationView}>
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        paddingTop: 50,
+        justifyContent: 'space-between',
+      }}>
+        <View style={{
+          flexDirection: 'row',
+        }}>
+          <Pressable onPress={() => {navigation.goBack()}} >
+            <Text style={{
+              textAlign: 'center',
+              paddingLeft: 8,
+              paddingRight: 8,
+              paddingTop: 4,
+              paddingBottom: 4,
+              fontSize: 15,
+              borderWidth: 1,
+              width: 30,
+              borderRadius: 15,
+            }}>x</Text>
+        </Pressable>
+          
 
-              <Text style={{
-                  textAlign: 'center',
-                  padding: 20,
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                }}>
-                Giới thiệu về nơi ở
-              </Text>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.text_desc}>
-                  Dù quý khách muốn thể chức mọt sự kiện hay các
-                 dịp kỷ niệm đặc biệt khác, chúng tôi là lựa chọn tuyệt vời 
-                  của quý khách với nhiều phòng lớn rộng rãi, được trang bị 
-                  đầy đủ để sẵn sàng đáp ứng mọi yêu cầu.</Text>
-                  
-                <Text style={styles.text_desc}>
-                  Chúng tôi chính là lựa chọn sáng giá dành cho những ai
-                  tìm kiếm một trải nghiệm xa hoa đầy thú vị trong kỳ nghỉ của mình. 
-                  Một trong những điểm chính đa dạng của khách sạn là liệu pháp spa đa dang, 
-                  giúp quý khách tươi trẻ thân, tâm.</Text>
-                    
-                  
-                
-              </View>
-            </View>
-          </View>
-        </BottomSheet>
+          <Text style={{
+            textAlign: 'right',
+            fontSize: 20,
+            width: '65%',
+            fontWeight: 'bold',
+          }}>
+            Giới thiệu về nơi ở
+          </Text>
       </View>
-    </SafeAreaView>
+        
+        <View style={{ flex: 1, paddingTop:20}}>
+          <Text style={styles.text_desc}>
+            Dù quý khách muốn thể chức mọt sự kiện hay các
+            dịp kỷ niệm đặc biệt khác, chúng tôi là lựa chọn tuyệt vời
+            của quý khách với nhiều phòng lớn rộng rãi, được trang bị
+            đầy đủ để sẵn sàng đáp ứng mọi yêu cầu.</Text>
+
+          <Text style={styles.text_desc}>
+            Chúng tôi chính là lựa chọn sáng giá dành cho những ai
+            tìm kiếm một trải nghiệm xa hoa đầy thú vị trong kỳ nghỉ của mình.
+            Một trong những điểm chính đa dạng của khách sạn là liệu pháp spa đa dang,
+            giúp quý khách tươi trẻ thân, tâm.</Text>
+
+
+
+        </View>
+      </View>
+    </View>
   );
 };
 
